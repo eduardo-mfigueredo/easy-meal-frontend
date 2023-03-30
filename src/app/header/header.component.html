@@ -1,0 +1,48 @@
+<section class="flex flex-col">
+  <div class="bg-black max-sm:hidden">
+    <div class="color-white flex flex-row justify-between items-center font-bold sm:mx-[10vw] my-1">
+      <span>
+        <a>
+          <mat-icon class="align-middle">phone_outlined</mat-icon>
+          (55) 999 666 333
+        </a>
+      </span>
+      <span>
+        <a class="px-6">Login</a>
+        <span>|</span>
+        <a class="px-6">Sign Up</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="bg-white flex flex-row justify-between sm:mx-[10vw] mx-[5vw] my-1">
+    <div>
+      <img class="object-contain max-h-[50px] max-w-[90px]"
+           src="../../assets/logo/rsz_cropped-main-site-logo-asset-70x503x.png" alt="logo">
+    </div>
+    <div class=" flex flex-row items-center max-sm:hidden">
+      <a href="" class="px-6">MENU</a>
+      <a href="" class="px-6">ABOUT</a>
+      <a href="" class="px-6">FAQ</a>
+      <a href="" class="px-6">CONTACT US</a>
+      <a href=""><mat-icon [matBadge]="0" matBadgeColor="warn">shopping_basket</mat-icon></a>
+    </div>
+    <button class="sm:hidden" (click)="toggleSideNav()" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Minha conta</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>person_pin</mat-icon>
+      <span>Meus espaços</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-menu>
+</section>
