@@ -7,11 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import { HeaderComponent } from './header/header.component';
 import {NgOptimizedImage} from "@angular/common";
+import { CountdownComponent } from './countdown/countdown.component';
+import { HeroSectionComponent } from './hero-section/hero-section.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    CountdownComponent,
+    HeroSectionComponent
   ],
   imports: [
     BrowserModule,
