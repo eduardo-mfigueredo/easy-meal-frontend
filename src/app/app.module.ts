@@ -9,13 +9,15 @@ import { HeaderComponent } from './header/header.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CountdownComponent } from './countdown/countdown.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { MealOptionsComponent } from './meal-options/meal-options.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CountdownComponent,
-    HeroSectionComponent
+    HeroSectionComponent,
+    MealOptionsComponent
   ],
   imports: [
     BrowserModule,
