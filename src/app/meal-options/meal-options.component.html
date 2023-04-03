@@ -2,19 +2,32 @@
 
   <p class="text-6xl text-center">Meal Options</p>
 
-  <mat-grid-list cols="3" rowHeight="320px" gutterSize="16px">
-    <mat-grid-tile
-      style="background-image: url({{ breakfast }});">
-      <p class="text-white">Breakfast</p>
-    </mat-grid-tile>
-    <mat-grid-tile
-      style="background-image: url({{ lunch }});">
-      <p class="text-white">Lunch</p>
-    </mat-grid-tile>
-    <mat-grid-tile
-      style="background-image: url({{ treats }});">
-      <p class="text-white">Treats</p>
-    </mat-grid-tile>
-  </mat-grid-list>
-
+  <div class="pt-10">
+    <mat-grid-list [cols]="this.deviceType == 'desktop' ? 3 : 1" rowHeight="320px" gutterSize="16px">
+      <a [routerLink]="['/breakfast']">
+        <mat-grid-tile
+          class="relative">
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <img class="w-full h-full object-cover" [src]="breakfast" alt="">
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Breakfast</p>
+        </mat-grid-tile>
+      </a>
+      <a [routerLink]="['/lunch']">
+        <mat-grid-tile
+          class="relative">
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <img class="w-full h-full object-cover" [src]="lunch" alt="">
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Lunch</p>
+        </mat-grid-tile>
+      </a>
+      <a [routerLink]="['/breakfast']">
+        <mat-grid-tile
+          class="relative">
+          <div class="absolute inset-0 bg-black opacity-40"></div>
+          <img class="w-full h-full object-cover" [src]="treats" alt="">
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Treats</p>
+        </mat-grid-tile>
+      </a>
+    </mat-grid-list>
+  </div>
 </section>
