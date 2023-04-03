@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {breakpoint} from "../services/breakpoints";
+import {breakpoint} from "../../services/breakpoints";
 import {Subscription} from "rxjs";
-import {BreakpointObserverService} from "../services/breakpoint-observer/breakpoint-observer.service";
+import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";
 
 @Component({
   selector: 'app-meal-options',
