@@ -1,0 +1,17 @@
+<section class="container">
+  <p class="text-6xl text-center">Menu</p>
+
+  <div class="py-20">
+    <mat-form-field appearance="outline" class="mr-8 w-[20rem]">
+      <mat-label>Choose Category</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let food of foods">
+          {{food}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button class="bg-green-700">
+      <span class="p-10 text-white"> SELECT & SEARCH </span>
+    </button>
+  </div>
+</section>

@@ -6,6 +6,8 @@ import { TreatsComponent } from './treats/treats.component';
 import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material/material.module";
 import {ProductCategoryRoutingModule} from "./product-category-routing.module";
+import { MenuComponent } from './menu/menu.component';
+import { MenuItemsComponent } from './menu-items/menu-items.component';
 
 
 
@@ -13,12 +15,15 @@ import {ProductCategoryRoutingModule} from "./product-category-routing.module";
   declarations: [
     BreakfastComponent,
     LunchComponent,
-    TreatsComponent
+    TreatsComponent,
+    MenuComponent,
+    MenuItemsComponent
   ],
   exports: [
     BreakfastComponent,
     LunchComponent,
-    TreatsComponent
+    TreatsComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
