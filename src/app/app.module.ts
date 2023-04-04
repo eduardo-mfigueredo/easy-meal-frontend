@@ -11,6 +11,8 @@ import {SharedModule} from "./shared/shared.module";
 import {HomeModule} from "./home/home.module";
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import {ProductCategoryModule} from "./product-category/product-category.module";
+import {HttpClientModule} from "@angular/common/http";
+import {MenuStore} from "./store/menu/menu.store";
 
 @NgModule({
   declarations: [
@@ -26,10 +28,11 @@ import {ProductCategoryModule} from "./product-category/product-category.module"
     NgOptimizedImage,
     SharedModule,
     HomeModule,
-    ProductCategoryModule
+    ProductCategoryModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [MenuStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

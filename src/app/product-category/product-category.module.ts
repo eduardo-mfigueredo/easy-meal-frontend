@@ -1,28 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BreakfastComponent } from './breakfast/breakfast.component';
-import { LunchComponent } from './lunch/lunch.component';
-import { TreatsComponent } from './treats/treats.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material/material.module";
 import {ProductCategoryRoutingModule} from "./product-category-routing.module";
-import { MenuComponent } from './menu/menu.component';
-import { MenuItemsComponent } from './menu-items/menu-items.component';
-
+import {MenuComponent} from './menu/menu.component';
+import {MenuItemsComponent} from './menu-items/menu-items.component';
+import { MenuOptionCardComponent } from './menu-option-card/menu-option-card.component';
 
 
 @NgModule({
   declarations: [
-    BreakfastComponent,
-    LunchComponent,
-    TreatsComponent,
     MenuComponent,
-    MenuItemsComponent
+    MenuItemsComponent,
+    MenuOptionCardComponent
   ],
   exports: [
-    BreakfastComponent,
-    LunchComponent,
-    TreatsComponent,
+    MenuOptionCardComponent,
     MenuComponent
   ],
   imports: [

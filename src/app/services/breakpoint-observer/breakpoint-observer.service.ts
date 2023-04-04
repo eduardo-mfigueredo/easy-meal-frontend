@@ -1,6 +1,6 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {BehaviorSubject, Subscription} from "rxjs";
-import {breakpoint} from "../breakpoints";
+import {breakpoint} from "./breakpoints";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {isPlatformBrowser} from "@angular/common";
 import {DeviceDetectorService} from "ngx-device-detector";

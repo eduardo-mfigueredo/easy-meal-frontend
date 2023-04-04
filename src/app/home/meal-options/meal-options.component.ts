@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {breakpoint} from "../../services/breakpoints";
+import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
 import {Subscription} from "rxjs";
 import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";
 

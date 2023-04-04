@@ -1,0 +1,32 @@
+{
+  "menuOption": [
+    {
+      "id": "1",
+      "title": "Chickpea and Mushroom Curry",
+      "description": "A delicious chickpea and mushroom curry with a hint of spice.",
+      "price": 7.99,
+      "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1001467_11.jpg?itok=Z8Y8Z7Zz",
+      "category": "Meal",
+      "nutritionalInfo": {
+        "calories": 500,
+        "fat": 20,
+        "carbs": 50,
+        "protein": 30
+      }
+    },
+    {
+      "id": "2",
+      "title": "Vegan pasta with Tomato and Basil",
+      "description": "Pasta with a tomato and basil sauce, topped with vegan cheese.",
+      "price": 10.99,
+      "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1001467_11.jpg?itok=Z8Y8Z7Zz",
+      "category": "Meal",
+      "nutritionalInfo": {
+        "calories": 450,
+        "fat": 10,
+        "carbs": 80,
+        "protein": 10
+      }
+    }
+  ]
+}
