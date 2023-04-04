@@ -12,7 +12,7 @@ import {Menu} from "@angular/cdk/menu";
 })
 export class MenuOptionCardComponent {
 
-  menuOptions$?: Observable<MenuModel | undefined>;
+  menuOptions$?: Observable<MenuModel| undefined>;
 
   constructor(private readonly menuStore: MenuStore
   ) {

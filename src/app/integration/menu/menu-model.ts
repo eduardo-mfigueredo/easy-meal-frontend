@@ -1,5 +1,5 @@
 export interface MenuModel {
-  menu: MenuOption[]
+  menuOption: MenuOption[]
 }
 
 export interface MenuOption {
