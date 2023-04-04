@@ -9,11 +9,14 @@ import {NgOptimizedImage} from "@angular/common";
 import {HomeComponent} from './home/home.component';
 import {SharedModule} from "./shared/shared.module";
 import {HomeModule} from "./home/home.module";
+import { ProductCategoryComponent } from './product-category/product-category.component';
+import {ProductCategoryModule} from "./product-category/product-category.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ProductCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import {HomeModule} from "./home/home.module";
     NgOptimizedImage,
     SharedModule,
     HomeModule,
+    ProductCategoryModule
 
   ],
   providers: [],
