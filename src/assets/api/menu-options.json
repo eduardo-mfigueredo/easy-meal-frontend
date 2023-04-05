@@ -5,7 +5,7 @@
       "title": "Chickpea and Mushroom Curry",
       "description": "A delicious chickpea and mushroom curry with a hint of spice.",
       "price": 7.99,
-      "image": "./assets/pics/Chicken-Stroganoff-14-Edit.jpg",
+      "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
       "category": "Meal",
       "nutritionalInfo": {
         "calories": 500,
@@ -19,7 +19,7 @@
       "title": "Vegan pasta with Tomato and Basil",
       "description": "Pasta with a tomato and basil sauce, topped with vegan cheese.",
       "price": 10.99,
-      "image": "./assets/pics/Chicken-Stroganoff-14-Edit.jpg",
+      "image": "./assets/pics/blueberry-muffins-350x240.jpg",
       "category": "Meal",
       "nutritionalInfo": {
         "calories": 450,

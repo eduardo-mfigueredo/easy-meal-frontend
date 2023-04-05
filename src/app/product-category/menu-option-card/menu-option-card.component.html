@@ -1,14 +1,36 @@
 <div *ngIf="menuOptions$ | async as menuOptions" class="container">
   <mat-grid-list cols="3">
     <mat-grid-tile *ngFor="let menuOption of menuOptions.menuOption">
-      <mat-card class="max-w-[400px]">
-          <img  class="h-[240px]" src="{{menuOption.image}}" alt="">
+      <div class="max-w-[350px]">
         <div>
-          <h2>{{ menuOption.title }}</h2>
-          <p> {{ menuOption.description }}</p>
-          <span> {{ menuOption.price | currency }}</span>
+          <div class="flex bg-gray-600 w-full justify-center">
+            <div class="flex">
+              <span class="text-white">{{menuOption.nutritionalInfo.calories}} </span>
+              <span class="text-white">calories</span>
+            </div>
+            <div class="flex">
+              <span class="text-white">{{menuOption.nutritionalInfo.protein}} </span>
+              <span class="text-white">protein</span>
+            </div>
+            <div class="flex">
+              <span class="text-white">{{menuOption.nutritionalInfo.carbs}} </span>
+              <span class="text-white">carbs</span>
+            </div>
+            <div class="flex">
+              <span class="text-white">{{menuOption.nutritionalInfo.fat}} </span>
+              <span class="text-white">fat</span>
+            </div>
+          </div>
+          <div class="max-w-[350px]">
+            <img class="h-[240px]" src="{{menuOption.image}}" alt="">
+            <div>
+              <h2>{{ menuOption.title }}</h2>
+              <p> {{ menuOption.description }}</p>
+              <span> {{ menuOption.price | currency }}</span>
+            </div>
+          </div>
         </div>
-      </mat-card>
+      </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
