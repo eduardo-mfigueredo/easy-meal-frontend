@@ -1,33 +1,45 @@
 <div *ngIf="menuOptions$ | async as menuOptions" class="container">
-  <mat-grid-list cols="3">
+  <mat-grid-list rowHeight="592px" cols="3">
     <mat-grid-tile *ngFor="let menuOption of menuOptions.menuOption">
-      <div class="max-w-[350px]">
-        <div>
-          <div class="flex bg-gray-600 w-full justify-center">
-            <div class="flex">
-              <span class="text-white">{{menuOption.nutritionalInfo.calories}} </span>
-              <span class="text-white">calories</span>
-            </div>
-            <div class="flex">
-              <span class="text-white">{{menuOption.nutritionalInfo.protein}} </span>
-              <span class="text-white">protein</span>
-            </div>
-            <div class="flex">
-              <span class="text-white">{{menuOption.nutritionalInfo.carbs}} </span>
-              <span class="text-white">carbs</span>
-            </div>
-            <div class="flex">
-              <span class="text-white">{{menuOption.nutritionalInfo.fat}} </span>
-              <span class="text-white">fat</span>
-            </div>
+      <div class="max-w-[350px] ">
+        <div class="flex bg-black w-full">
+          <div class="flex flex-col items-center border-r-2 p-6">
+            <span class="text-white">{{menuOption.nutritionalInfo.calories}} </span>
+            <span class="text-white">calories</span>
           </div>
-          <div class="max-w-[350px]">
-            <img class="h-[240px]" src="{{menuOption.image}}" alt="">
-            <div>
-              <h2>{{ menuOption.title }}</h2>
-              <p> {{ menuOption.description }}</p>
-              <span> {{ menuOption.price | currency }}</span>
+          <div class="flex flex-col items-center border-r-2 p-6">
+            <span class="text-white">{{menuOption.nutritionalInfo.protein}}g </span>
+            <span class="text-white">protein</span>
+          </div>
+          <div class="flex flex-col items-center border-r-2 p-6">
+            <span class="text-white">{{menuOption.nutritionalInfo.carbs}}g </span>
+            <span class="text-white">carbs</span>
+          </div>
+          <div class="flex flex-col items-center p-6">
+            <span class="text-white">{{menuOption.nutritionalInfo.fat}}g </span>
+            <span class="text-white">fat</span>
+          </div>
+        </div>
+        <img class="" src="{{menuOption.image}}" alt="">
+        <div class="border-l-2 border-r-2 border-b-2 border-gray-200 rounded p-4">
+          <h2 class="font-bold">{{ menuOption.title }}</h2>
+          <p> {{ menuOption.description }}</p>
+          <span class="font-bold"> {{ menuOption.price | currency }}</span>
+
+          <div class="flex justify-around mt-2">
+            <div class="flex items-center">
+              <button class="border border-gray-200 p-2">
+              <mat-icon class="">add</mat-icon>
+              </button>
+              <span class="border border-gray-200 p-4">1</span>
+              <button class="border border-gray-200 p-2">
+              <mat-icon>remove</mat-icon>
+              </button>
             </div>
+            <button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6">
+              <mat-icon>add</mat-icon>
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
