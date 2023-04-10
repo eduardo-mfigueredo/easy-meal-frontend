@@ -1,9 +1,5 @@
-import { Component } from '@angular/core';
-import {MenuService} from "../../integration/menu/menu.service";
-import {MenuStore} from "../../store/menu/menu.store";
-import {Observable} from "rxjs";
-import {MenuModel} from "../../integration/menu/menu-model";
-import {Menu} from "@angular/cdk/menu";
+import {Component, Input} from '@angular/core';
+import {MenuOption} from "../../integration/menu/menu-model";
 
 @Component({
   selector: 'app-menu-option-card',
@@ -12,14 +8,6 @@ import {Menu} from "@angular/cdk/menu";
 })
 export class MenuOptionCardComponent {
 
-  menuOptions$?: Observable<MenuModel| undefined>;
+  @Input() menuOption: MenuOption | undefined;
 
-  constructor(private readonly menuStore: MenuStore
-  ) {
-    this.menuStore.fetchMenuOptions();
-  }
-
-  ngOnInit(): void {
-    this.menuOptions$ = this.menuStore.getMenuOptions;
-  }
 }

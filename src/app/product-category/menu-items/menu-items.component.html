@@ -1,1 +1,7 @@
-<app-menu-option-card></app-menu-option-card>
+<div *ngIf="menuOptions$ | async as menuOptions" class="container">
+  <mat-grid-list rowHeight="592px" cols="3">
+    <mat-grid-tile *ngFor="let menuOption of menuOptions.menuOption">
+      <app-menu-option-card [menuOption]="menuOption"></app-menu-option-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
