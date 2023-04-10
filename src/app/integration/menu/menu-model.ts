@@ -10,6 +10,7 @@ export interface MenuOption {
   image: string
   category: string
   nutritionalInfo: NutritionalInfo
+  quantity: number;
 }
 
 export interface NutritionalInfo {
@@ -17,4 +18,8 @@ export interface NutritionalInfo {
   fat: number
   carbs: number
   protein: number
+}
+
+export interface Cart {
+  items: Array<MenuOption>;
 }

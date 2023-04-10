@@ -23,17 +23,17 @@
     <p> {{ menuOption.description }}</p>
     <span class="font-bold"> {{ menuOption.price | currency }}</span>
 
-    <div class="flex justify-around mt-2">
+    <div class="flex justify-around">
       <div class="flex items-center">
-        <button class="border border-gray-200 p-2">
-          <mat-icon class="">add</mat-icon>
-        </button>
-        <span class="border border-gray-200 p-4">1</span>
-        <button class="border border-gray-200 p-2">
-          <mat-icon>remove</mat-icon>
-        </button>
+        <mat-form-field appearance="outline" class="max-w-[150px]">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" [(ngModel)]="menuOption.quantity" >
+        </mat-form-field>
       </div>
-      <button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6">
+      <button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6"
+              (click)="onAddToCart()"
+              [disabled]="menuOption.quantity == undefined || menuOption.quantity <= 0"
+      >
         <mat-icon>add</mat-icon>
         Add to cart
       </button>

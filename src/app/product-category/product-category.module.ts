@@ -6,6 +6,7 @@ import {ProductCategoryRoutingModule} from "./product-category-routing.module";
 import {MenuComponent} from './menu/menu.component';
 import {MenuItemsComponent} from './menu-items/menu-items.component';
 import { MenuOptionCardComponent } from './menu-option-card/menu-option-card.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,11 +19,12 @@ import { MenuOptionCardComponent } from './menu-option-card/menu-option-card.com
     MenuOptionCardComponent,
     MenuComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    MaterialModule,
-    ProductCategoryRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        MaterialModule,
+        ProductCategoryRoutingModule,
+        FormsModule
+    ]
 })
 export class ProductCategoryModule { }

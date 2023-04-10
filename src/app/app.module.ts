@@ -13,12 +13,16 @@ import { ProductCategoryComponent } from './product-category/product-category.co
 import {ProductCategoryModule} from "./product-category/product-category.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MenuStore} from "./store/menu/menu.store";
+import { CartComponent } from './cart/cart.component';
+import { CartCardComponent } from './cart/cart-card/cart-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    CartComponent,
+    CartCardComponent
   ],
   imports: [
     BrowserModule,

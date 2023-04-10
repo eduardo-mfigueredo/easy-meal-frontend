@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {CartComponent} from "./cart/cart.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('src/app/product-category/product-category.module').then(m => m.ProductCategoryModule),
       }
     ]
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   }
 ];
 

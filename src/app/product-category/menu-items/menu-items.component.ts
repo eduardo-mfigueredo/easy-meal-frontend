@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
-import {MenuModel} from "../../integration/menu/menu-model";
+import {MenuModel, MenuOption} from "../../integration/menu/menu-model";
 import {MenuStore} from "../../store/menu/menu.store";
+import {CartService} from "../../services/cart/cart.service";
 
 @Component({
   selector: 'app-menu-items',
@@ -12,7 +13,8 @@ export class MenuItemsComponent {
 
   menuOptions$?: Observable<MenuModel| undefined>;
 
-  constructor(private readonly menuStore: MenuStore
+  constructor(private readonly menuStore: MenuStore,
+              private readonly cartService: CartService
   ) {
     this.menuStore.fetchMenuOptions();
   }
@@ -20,4 +22,9 @@ export class MenuItemsComponent {
   ngOnInit(): void {
     this.menuOptions$ = this.menuStore.getMenuOptions;
   }
+
+  onAddToCart(menuOption: MenuOption): void {
+    this.cartService.addToCart(menuOption);
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MenuOption} from "../../integration/menu/menu-model";
 
 @Component({
@@ -8,6 +8,16 @@ import {MenuOption} from "../../integration/menu/menu-model";
 })
 export class MenuOptionCardComponent {
 
-  @Input() menuOption: MenuOption | undefined;
+  @Input() menuOption!: MenuOption;
+
+  @Output() addToCart = new EventEmitter<MenuOption>();
+
+  onAddToCart(): void {
+    this.addToCart.emit(this.menuOption)
+  }
+
+  ngOnInit() {
+    console.log(this.menuOption.quantity)
+}
 
 }

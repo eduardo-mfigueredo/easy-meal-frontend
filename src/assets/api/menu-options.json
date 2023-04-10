@@ -41,6 +41,20 @@
         "carbs": 50,
         "protein": 30
       }
+    },
+    {
+      "id": "1",
+      "title": "Chickpea and Mushroom Curry",
+      "description": "A delicious chickpea and mushroom curry with a hint of spice.",
+      "price": 7.99,
+      "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
+      "category": "Meal",
+      "nutritionalInfo": {
+        "calories": 500,
+        "fat": 20,
+        "carbs": 50,
+        "protein": 30
+      }
     }
   ]
 }
