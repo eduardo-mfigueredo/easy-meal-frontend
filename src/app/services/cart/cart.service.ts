@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cart, MenuOption} from "../../integration/menu/menu-model";
+import {Menu} from "@angular/cdk/menu";
 
 @Injectable({
   providedIn: 'root'
@@ -12,40 +13,40 @@ export class CartService {
   constructor(private _snackBar: MatSnackBar) {
   }
 
-  addToCart(item: MenuOption): void {
+  addToCart(menuOption: MenuOption): void {
     const items = [...this.cart.value.items];
-    const itemInCart = items.find((_item) => _item.id === item.id);
+    const itemInCart = items.find((_item) => _item.id === menuOption.id);
     if (itemInCart) {
       itemInCart.quantity += 1;
     } else {
-      items.push(item)
+      items.push(menuOption)
     }
     this.cart.next({ items })
     this._snackBar.open('Ítem adicionado ao carrinho', 'Ok', { duration: 3000 });
     console.log(this.cart.value);
   }
 
-  // removeQuantity(item: CartItem): void {
-  //   let itemForRemoval: CartItem | undefined;
-  //
-  //   let filteredItems = this.cart.value.items.map(
-  //     (_item) => {
-  //       if(_item.id === item.id) {
-  //         _item.quantity--;
-  //         if(_item.quantity === 0) {
-  //           itemForRemoval = _item;
-  //         }
-  //       }
-  //       return _item;
-  //     }
-  //   );
-  //   if(itemForRemoval){
-  //     filteredItems = this.removeFromCart(itemForRemoval, false)
-  //   }
-  //   this.cart.next({ items: filteredItems })
-  //   this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000})
-  // }
-  //
+  removeQuantity(menuOption: MenuOption): void {
+    let itemForRemoval: MenuOption | undefined;
+
+    let filteredItems = this.cart.value.items.map(
+      (_item) => {
+        if(_item.id === menuOption.id) {
+          _item.quantity--;
+          if(_item.quantity === 0) {
+            itemForRemoval = _item;
+          }
+        }
+        return _item;
+      }
+    );
+    if(itemForRemoval){
+      filteredItems = this.removeFromCart(itemForRemoval, false)
+    }
+    this.cart.next({ items: filteredItems })
+    this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000})
+  }
+
   // getTotal(items: Array<CartItem>): number{
   //   return items.
   //   map((item) => item.price * item.quantity)
@@ -57,16 +58,16 @@ export class CartService {
   //   this._snackBar.open('Carrinho vazio.', 'Ok', { duration: 3000 })
   // }
   //
-  // removeFromCart(item: CartItem, update = true): Array<CartItem> {
-  //   const filteredItems =
-  //     this.cart.value.items.filter(
-  //       (_item) => _item.id !== item.id
-  //     );
-  //   if(update) {
-  //     this.cart.next({items: filteredItems});
-  //     this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000});
-  //   }
-  //   return filteredItems;
-  // }
+  removeFromCart(item: MenuOption, update = true): Array<MenuOption> {
+    const filteredItems =
+      this.cart.value.items.filter(
+        (_item) => _item.id !== item.id
+      );
+    if(update) {
+      this.cart.next({items: filteredItems});
+      this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000});
+    }
+    return filteredItems;
+  }
 
 }

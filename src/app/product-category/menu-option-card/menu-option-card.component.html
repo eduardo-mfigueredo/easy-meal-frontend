@@ -23,14 +23,14 @@
     <p> {{ menuOption.description }}</p>
     <span class="font-bold"> {{ menuOption.price | currency }}</span>
 
-    <div class="flex justify-around">
+    <div class="flex justify-around mt-4">
       <div class="flex items-center">
-        <mat-form-field appearance="outline" class="max-w-[150px]">
+        <mat-form-field appearance="outline" class="max-w-[125px] h-[55px]">
           <mat-label>Quantity</mat-label>
           <input matInput type="number" [(ngModel)]="menuOption.quantity" >
         </mat-form-field>
       </div>
-      <button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6"
+      <button mat-button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6"
               (click)="onAddToCart()"
               [disabled]="menuOption.quantity == undefined || menuOption.quantity <= 0"
       >

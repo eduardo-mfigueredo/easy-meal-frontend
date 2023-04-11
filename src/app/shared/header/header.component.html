@@ -32,8 +32,12 @@
       <a mat-button href="" class="px-6">ABOUT</a>
       <a mat-button href="" class="px-6">FAQ</a>
       <a mat-button href="" class="px-6">CONTACT US</a>
-      <a mat-button href="">
-        <mat-icon [matBadge]="0" matBadgeColor="warn">shopping_basket</mat-icon>
+      <a mat-button routerLink="cart">
+        <mat-icon [matBadge]="itemsQuantity"
+                  [matBadgeHidden]="!itemsQuantity"
+                  matBadgeColor="warn"
+        >shopping_basket
+        </mat-icon>
       </a>
     </div>
     <button class="sm:hidden" (click)="toggleSideNav()" [matMenuTriggerFor]="menu">

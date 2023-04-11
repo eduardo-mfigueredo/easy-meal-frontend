@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MenuStore} from "./store/menu/menu.store";
 import { CartComponent } from './cart/cart.component';
 import { CartCardComponent } from './cart/cart-card/cart-card.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CartCardComponent } from './cart/cart-card/cart-card.component';
     SharedModule,
     HomeModule,
     ProductCategoryModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [MenuStore],

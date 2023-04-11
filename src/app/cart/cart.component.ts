@@ -9,38 +9,22 @@ import {CartService} from "../services/cart/cart.service";
 })
 export class CartComponent {
   cart: Cart = { items: [] };
-  dataSource: Array<MenuOption> = [];
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart;
-      this.dataSource = this.cart.items;
-      console.log(this.dataSource);
-      console.log(this.cart);
+      console.log(this.cart.items);
     })
   }
 
-  // getTotal(items: Array<CartItem>): number{
-  //   return this.cartService.getTotal(items)
-  // };
-
-  // onClearCart(): void {
-  //   this.cartService.clearCart();
-  // }
-
-  // onRemoveFromCart(item: CartItem): void {
-  //   this.cartService.removeFromCart(item);
-  // }
-
-  onAddQuantity(item: MenuOption): void {
-    this.cartService.addToCart(item);
+  onAddQuantity(menuOption: MenuOption): void {
+    this.cartService.addToCart(menuOption);
   }
 
-  // onRemoveQuantity(item: CartItem): void {
-  //   this.cartService.removeQuantity(item);
-  // }
-
+  onRemoveQuantity(menuOption: MenuOption): void {
+    this.cartService.removeQuantity(menuOption);
+  }
 
 }

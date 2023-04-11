@@ -1,5 +1,5 @@
 <div *ngIf="menuOptions$ | async as menuOptions" class="container">
-  <mat-grid-list rowHeight="592px" cols="3">
+  <mat-grid-list rowHeight="592px" [cols]="this.deviceType == 'desktop' ? 3 : 1">
     <mat-grid-tile *ngFor="let menuOption of menuOptions.menuOption">
       <app-menu-option-card
         [menuOption]="menuOption"
