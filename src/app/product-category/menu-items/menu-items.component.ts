@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
-import {MenuModel, MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../integration/menu/menu-model";
 import {MenuStore} from "../../store/menu/menu.store";
 import {CartService} from "../../services/cart/cart.service";
 import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
@@ -13,7 +13,7 @@ import {BreakpointObserverService} from "../../services/breakpoint-observer/brea
 })
 export class MenuItemsComponent implements OnInit, OnDestroy {
 
-  menuOptions$?: Observable<MenuModel | undefined>;
+  menuOptions$?: Observable<MenuOption[] | undefined>;
 
   subscriptions: Subscription[] = [];
   deviceType!: breakpoint | undefined;
@@ -22,7 +22,7 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
               private readonly cartService: CartService,
               private readonly _breakpointObserverService: BreakpointObserverService
   ) {
-    this.menuStore.fetchMenuOptions();
+    this.menuStore.fetchMenuOptions('');
     this._breakpointObserverService.init();
 
   }

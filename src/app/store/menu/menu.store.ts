@@ -1,15 +1,16 @@
-import {MenuModel, MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../integration/menu/menu-model";
 import {Injectable} from "@angular/core";
 import {ComponentStore, tapResponse} from "@ngrx/component-store";
-import {map, Observable, pipe, switchMap, tap} from "rxjs";
+import {catchError, EMPTY, Observable, switchMap} from "rxjs";
 import {MenuService} from "../../integration/menu/menu.service";
 import {HttpErrorResponse} from "@angular/common/http";
 
 export interface MenuState {
-  menuOptions?: MenuModel;
+  menuOptions?: MenuOption[];
 }
 
 export const initialMenuState: MenuState = {};
+
 
 @Injectable()
 export class MenuStore extends ComponentStore<MenuState> {
@@ -18,24 +19,57 @@ export class MenuStore extends ComponentStore<MenuState> {
     super(initialMenuState);
   }
 
-  fetchMenuOptions = this.effect(() => {
-    return this._service.getMenuOptions().pipe(
-      tapResponse(
-        (response: MenuModel) => {
-          this.setMenuOptions(response);
-          console.log("vim da store: ", response)
-        },
-        (error: HttpErrorResponse) => console.error(error)
+  readonly fetchMenuOptions = this.effect((category$: Observable<string> ) => {
+    return category$.pipe(
+      switchMap((category) =>
+        this._service.getMenuOptions(category).pipe(
+          tapResponse(
+            (response) => {
+              this.setMenuOptions(response);
+              console.log(response)
+            },
+            (error: HttpErrorResponse) => {
+              console.log('deu error --');
+            }
+          ),
+          catchError(() => EMPTY)
+        )
       )
-    )
-  })
+    );
+  });
 
+  // fetchMenuOptions = this.effect((category$: Observable<string>) => {
+  //   return this._service.getMenuOptions().pipe(
+  //     tapResponse(
+  //       (response: MenuModel) => {
+  //         this.setMenuOptions(response);
+  //         console.log("vim da store: ", response)
+  //       },
+  //       (error: HttpErrorResponse) => console.error(error)
+  //     )
+  //   )
+  // })
+  //
+  // fetchFilteredMenuOptions = this.effect(() => {
+  //   return this._service.getMenuOptions().pipe(
+  //     tapResponse(
+  //       (response: MenuModel) => {
+  //         this.setMenuOptions(response);
+  //         console.log("vim da store: ", response)
+  //       },
+  //       (error: HttpErrorResponse) => console.error(error)
+  //     )
+  //   )
+  // })
 
-  readonly setMenuOptions = this.updater((state, menuOptions: MenuModel | undefined) => {
+  readonly setMenuOptions = this.updater((state, menuOptions: MenuOption[] | undefined) => {
     return {...state, menuOptions};
   })
 
   readonly getMenuOptions = this.select((state) => state.menuOptions);
+
+
+
 }
 
 

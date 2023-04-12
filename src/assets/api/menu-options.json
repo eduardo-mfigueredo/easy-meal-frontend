@@ -1,5 +1,5 @@
-{
-  "menuOption": [
+
+  [
     {
       "id": "1",
       "title": "Chickpea and Mushroom Curry",
@@ -34,7 +34,7 @@
       "description": "A delicious chocolate cake with a hint of spice.",
       "price": 5.99,
       "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
-      "category": "Meal",
+      "category": "Treat",
       "nutritionalInfo": {
         "calories": 500,
         "fat": 20,
@@ -57,4 +57,4 @@
       }
     }
   ]
-}
+

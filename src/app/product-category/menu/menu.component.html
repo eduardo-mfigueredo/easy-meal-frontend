@@ -1,17 +1,16 @@
 <section class="container">
   <p class="text-6xl text-center">Menu</p>
 
-  <div class="py-20">
-    <mat-form-field appearance="outline" class="mr-8 w-[20rem]">
-      <mat-label>Choose Category</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let food of foods">
-          {{food}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-flat-button class="bg-green-700">
-      <span class="p-10 text-white"> SELECT & SEARCH </span>
-    </button>
+  <div class="pt-20">
+    <mat-expansion-panel *ngIf="foods" class="max-w-md">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Choose Category</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let food of foods" [value]="food">
+          <button mat-flat-button (click)="onShowCategory(food)">{{food}}</button>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-expansion-panel>
   </div>
 </section>
