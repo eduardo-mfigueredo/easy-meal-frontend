@@ -1,16 +1,34 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cart, MenuOption} from "../../integration/menu/menu-model";
-import {Menu} from "@angular/cdk/menu";
 
+const KEY = 'cart';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
   cart = new BehaviorSubject<Cart>({ items: []});
 
   constructor(private _snackBar: MatSnackBar) {
+    const data = localStorage.getItem(KEY);
+    if (data) {
+      this.cart = new BehaviorSubject<Cart>(JSON.parse(data));
+    }
+  }
+
+  saveCartToLocalStorage(cart: Cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  loadCartFromLocalStorage(): Cart {
+    const cartData = localStorage.getItem('cart');
+    if (cartData) {
+      return JSON.parse(cartData);
+    } else {
+      return { items: [] };
+    }
   }
 
   addToCart(menuOption: MenuOption): void {
@@ -21,8 +39,9 @@ export class CartService {
     } else {
       items.push(menuOption)
     }
-    this.cart.next({ items })
-    this._snackBar.open('Ítem adicionado ao carrinho', 'Ok', { duration: 3000 });
+    this.cart.next({ items });
+    localStorage.setItem(KEY, JSON.stringify(this.cart.value));
+    this._snackBar.open('Item added', 'Ok', { duration: 3000 });
     console.log(this.cart.value);
   }
 
@@ -43,21 +62,23 @@ export class CartService {
     if(itemForRemoval){
       filteredItems = this.removeFromCart(itemForRemoval, false)
     }
-    this.cart.next({ items: filteredItems })
-    this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000})
+    this.cart.next({ items: filteredItems });
+    localStorage.setItem(KEY, JSON.stringify(this.cart.value));
+    this._snackBar.open('1 item removed', 'ok', {duration: 3000});
   }
 
-  // getTotal(items: Array<CartItem>): number{
-  //   return items.
-  //   map((item) => item.price * item.quantity)
-  //     .reduce((prev, current) => prev + current, 0)
-  // }
-  //
-  // clearCart(): void {
-  //   this.cart.next({ items: [] })
-  //   this._snackBar.open('Carrinho vazio.', 'Ok', { duration: 3000 })
-  // }
-  //
+  getTotal(items: Array<MenuOption>): number{
+    return items.
+    map((item) => item.price * item.quantity)
+      .reduce((prev, current) => prev + current, 0)
+  }
+
+  clearCart(): void {
+    localStorage.removeItem(KEY);
+    this.cart.next({ items: [] })
+    this._snackBar.open('Empty cart.', 'Ok', { duration: 3000 })
+  }
+
   removeFromCart(item: MenuOption, update = true): Array<MenuOption> {
     const filteredItems =
       this.cart.value.items.filter(
@@ -65,7 +86,7 @@ export class CartService {
       );
     if(update) {
       this.cart.next({items: filteredItems});
-      this._snackBar.open('1 ítem removido do carrinho', 'ok', {duration: 3000});
+      this._snackBar.open('1 item removed', 'ok', {duration: 3000});
     }
     return filteredItems;
   }

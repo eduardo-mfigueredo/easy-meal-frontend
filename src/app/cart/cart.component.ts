@@ -16,6 +16,7 @@ export class CartComponent {
     this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart;
       console.log(this.cart.items);
+      this.cartService.saveCartToLocalStorage(this.cart);
     })
   }
 

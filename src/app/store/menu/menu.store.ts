@@ -38,30 +38,6 @@ export class MenuStore extends ComponentStore<MenuState> {
     );
   });
 
-  // fetchMenuOptions = this.effect((category$: Observable<string>) => {
-  //   return this._service.getMenuOptions().pipe(
-  //     tapResponse(
-  //       (response: MenuModel) => {
-  //         this.setMenuOptions(response);
-  //         console.log("vim da store: ", response)
-  //       },
-  //       (error: HttpErrorResponse) => console.error(error)
-  //     )
-  //   )
-  // })
-  //
-  // fetchFilteredMenuOptions = this.effect(() => {
-  //   return this._service.getMenuOptions().pipe(
-  //     tapResponse(
-  //       (response: MenuModel) => {
-  //         this.setMenuOptions(response);
-  //         console.log("vim da store: ", response)
-  //       },
-  //       (error: HttpErrorResponse) => console.error(error)
-  //     )
-  //   )
-  // })
-
   readonly setMenuOptions = this.updater((state, menuOptions: MenuOption[] | undefined) => {
     return {...state, menuOptions};
   })
