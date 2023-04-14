@@ -4,7 +4,7 @@
       <span>
         <a>
           <mat-icon class="align-middle">phone_outlined</mat-icon>
-          (55) 999 666 333
+          (55) 999 666 333 | eat@healthy.com
         </a>
       </span>
       <span>
@@ -32,13 +32,41 @@
       <a mat-button href="" class="px-6">ABOUT</a>
       <a mat-button href="" class="px-6">FAQ</a>
       <a mat-button href="" class="px-6">CONTACT US</a>
-      <a mat-button routerLink="cart">
+      <a mat-button [matMenuTriggerFor]="cart">
         <mat-icon [matBadge]="itemsQuantity"
                   [matBadgeHidden]="!itemsQuantity"
                   matBadgeColor="warn"
         >shopping_basket
         </mat-icon>
       </a>
+      <mat-menu #cart="matMenu">
+        <div class="p-4">
+          <p>In your cart: {{itemsQuantity}} items</p>
+          <mat-divider></mat-divider>
+          <ng-container *ngFor="let item of cartItems.items">
+            <div
+              class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
+              <div class="p-2">
+                <img class="w-[80px] h-[50px]" src="{{item.image}}" alt="image">
+              </div>
+              <div>
+                <p class="text-lg"> {{item.title}} </p>
+                <p> {{item.description}} </p>
+              </div>
+              <div class="flex w-[150px] justify-between items-center">
+                <p class="h-[20px] p-1.5">{{item.quantity}} x {{item.price | currency}} </p>
+                <button class="mt-1.5" (click)="onRemoveItem(item)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+          <mat-divider></mat-divider>
+          <button mat-flat-button class="bg-green-700" routerLink="cart">
+            <span class="text-white">VIEW CART</span>
+          </button>
+        </div>
+      </mat-menu>
     </div>
     <button class="sm:hidden" (click)="toggleSideNav()" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>

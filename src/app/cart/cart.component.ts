@@ -28,4 +28,8 @@ export class CartComponent {
     this.cartService.removeQuantity(menuOption);
   }
 
+  onRemoveItem(menuOption: MenuOption): void {
+    this.cartService.removeFromCart(menuOption);
+  }
+
 }
