@@ -6,26 +6,42 @@
     <mat-grid-list [cols]="this.deviceType == 'desktop' ? 3 : 1" rowHeight="320px" gutterSize="16px">
       <a [routerLink]="['product-category/breakfast']">
         <mat-grid-tile
-          class="relative">
+          class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>
-          <img class="w-full h-full object-cover" [src]="breakfast" alt="">
-          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Breakfast</p>
+          <img
+            class="w-full h-full object-cover transition-transform duration-300
+                   transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
+            [src]="breakfast" alt=""
+          >
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold group-hover:text-green-700">
+            Breakfast
+          </p>
         </mat-grid-tile>
       </a>
       <a [routerLink]="['product-category/lunch']">
         <mat-grid-tile
-          class="relative">
+          class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>
-          <img class="w-full h-full object-cover" [src]="lunch" alt="">
-          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Lunch</p>
+          <img class="w-full h-full object-cover transition-transform duration-300
+                   transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
+               [src]="lunch" alt=""
+          >
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold group-hover:text-green-700">
+            Lunch
+          </p>
         </mat-grid-tile>
       </a>
       <a [routerLink]="['product-category/breakfast']">
         <mat-grid-tile
-          class="relative">
+          class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>
-          <img class="w-full h-full object-cover" [src]="treats" alt="">
-          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold">Treats</p>
+          <img class="w-full h-full object-cover transition-transform duration-300
+                   transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
+               [src]="treats" alt=""
+          >
+          <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold group-hover:text-green-700">
+            Treats
+          </p>
         </mat-grid-tile>
       </a>
     </mat-grid-list>
