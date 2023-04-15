@@ -10,18 +10,16 @@ import {CartService} from "../../services/cart/cart.service";
 export class HeaderComponent {
   showSideNav!: boolean;
   itemsQuantity: number = 0;
-  private _cart: Cart = { items: [] };
+  _cart: Cart = { items: [] };
   @Output() toggledSideNav: EventEmitter<boolean> = new EventEmitter();
-
-  cartItems: Cart = { items: [] };
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartService.cart.subscribe((_cart: Cart) => {
-      this.cartItems = _cart;
-      console.log(this.cartItems.items);
-      this.cartService.saveCartToLocalStorage(this.cartItems);
+    this.cartService.cart.subscribe((cart: Cart) => {
+      this._cart = cart;
+      console.log(this._cart.items);
+      this.cartService.saveCartToLocalStorage(this._cart);
     })
   }
   toggleSideNav() {
