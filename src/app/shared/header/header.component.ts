@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Cart, MenuOption} from "../../integration/menu/menu-model";
-import {CartService} from "../../services/cart/cart.service";
+import {Observable} from "rxjs";
+import {CartStore} from "../../store/cart/cart.store";
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,15 @@ export class HeaderComponent {
   showSideNav!: boolean;
   itemsQuantity: number = 0;
   _cart: Cart = { items: [] };
+  cart$?: Observable<Cart | undefined>;
   @Output() toggledSideNav: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartStore: CartStore) {
+    this.cartStore.fetchCart(this._cart);
+  }
 
   ngOnInit(): void {
-    this.cartService.cart.subscribe((cart: Cart) => {
-      this._cart = cart;
-      console.log(this._cart.items);
-      this.cartService.saveCartToLocalStorage(this._cart);
-    })
+    this.cart$ = this.cartStore.getCart();
   }
   toggleSideNav() {
     this.toggledSideNav.emit();
@@ -41,7 +41,7 @@ export class HeaderComponent {
   }
 
   onRemoveItem(item: MenuOption): void {
-    this.cartService.removeFromCart(item);
+    this.cartStore.removeFromCart(item);
   }
 
 }
