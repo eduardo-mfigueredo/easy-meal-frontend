@@ -1,29 +1,31 @@
-<div class="container">
-  <p class="text-6xl text-center">Shopping Cart</p>
-</div>
-
-<ng-container *ngFor="let item of cart.items">
-  <div
-    class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
-    <div class="p-2">
-      <img class="w-[80px] h-[50px]" src="{{item.image}}" alt="image">
-    </div>
-    <div>
-      <p class="text-2xl"> {{item.title}} </p>
-      <p> {{item.description}} </p>
-    </div>
-    <div class="flex w-[150px] justify-between items-center">
-      <p class="h-[20px] p-1.5"> {{item.price | currency}} </p>
-      <button mat-icon-button (click)="onRemoveQuantity(item)">
-        <mat-icon>remove</mat-icon>
-      </button>
-      <span class="bg-white">{{item.quantity}}</span>
-      <button mat-icon-button (click)="onAddQuantity(item)">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button class="mt-1.5" (click)="onRemoveItem(item)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
+<section *ngIf="cart$ | async as cart">
+  <div class="container">
+    <p class="text-6xl text-center">Shopping Cart</p>
   </div>
-</ng-container>
+
+  <ng-container *ngFor="let item of cart.items">
+    <div
+      class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
+      <div class="p-2">
+        <img class="w-[80px] h-[50px]" src="{{item.image}}" alt="image">
+      </div>
+      <div>
+        <p class="text-2xl"> {{item.title}} </p>
+        <p> {{item.description}} </p>
+      </div>
+      <div class="flex w-[150px] justify-between items-center">
+        <p class="h-[20px] p-1.5"> {{item.price | currency}} </p>
+              <button mat-icon-button (click)="onRemoveQuantity(item)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="bg-white">{{item.quantity}}</span>
+              <button mat-icon-button (click)="onAddQuantity(item)">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button class="mt-1.5" (click)="onRemoveItem(item)">
+                <mat-icon>delete</mat-icon>
+              </button>
+      </div>
+    </div>
+  </ng-container>
+</section>

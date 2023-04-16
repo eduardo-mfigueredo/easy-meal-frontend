@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Cart, MenuOption} from "../integration/menu/menu-model";
 import {CartService} from "../services/cart/cart.service";
+import {CartStore} from "../store/cart/cart.store";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -8,28 +10,29 @@ import {CartService} from "../services/cart/cart.service";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  cart: Cart = { items: [] };
+  cart: Cart = {items: []};
+  cart$?: Observable<Cart | undefined>;
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartStore: CartStore
+  ) {
+     this.cartStore.fetchCart(this.cart);
+  }
 
   ngOnInit(): void {
-    this.cartService.cart.subscribe((_cart: Cart) => {
-      this.cart = _cart;
-      console.log(this.cart.items);
-      this.cartService.saveCartToLocalStorage(this.cart);
-    })
+    this.cart$ = this.cartStore.getCart();
   }
 
   onAddQuantity(menuOption: MenuOption): void {
-    this.cartService.addToCart(menuOption);
+    this.cartStore.addToCart(menuOption);
   }
 
   onRemoveQuantity(menuOption: MenuOption): void {
-    this.cartService.removeQuantity(menuOption);
+    this.cartStore.removeQuantity(menuOption);
   }
 
   onRemoveItem(menuOption: MenuOption): void {
-    this.cartService.removeFromCart(menuOption);
+    this.cartStore.removeFromCart(menuOption);
   }
 
 }

@@ -16,6 +16,7 @@ import {MenuStore} from "./store/menu/menu.store";
 import { CartComponent } from './cart/cart.component';
 import { CartCardComponent } from './cart/cart-card/cart-card.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {CartStore} from "./store/cart/cart.store";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
 
   ],
-  providers: [MenuStore],
+  providers: [MenuStore, CartStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
