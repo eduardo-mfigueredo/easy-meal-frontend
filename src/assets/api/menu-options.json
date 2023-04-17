@@ -4,8 +4,8 @@
       "id": "1",
       "title": "Chickpea and Mushroom Curry",
       "description": "A delicious chickpea and mushroom curry with a hint of spice.",
-      "price": 7.99,
-      "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
+      "price": 8.99,
+      "image": "./assets/pics/cards/simple-chickpea-curry.jpg",
       "category": "Meal",
       "nutritionalInfo": {
         "calories": 500,
@@ -19,7 +19,7 @@
       "title": "Vegan pasta with Tomato and Basil",
       "description": "Pasta with a tomato and basil sauce, topped with vegan cheese.",
       "price": 10.99,
-      "image": "./assets/pics/blueberry-muffins-350x240.jpg",
+      "image": "./assets/pics/cards/vegan-pasta.jpg",
       "category": "Meal",
       "nutritionalInfo": {
         "calories": 450,
@@ -30,10 +30,10 @@
     },
     {
       "id": "3",
-      "title": "Vegan Chocolate Cake",
-      "description": "A delicious chocolate cake with a hint of spice.",
+      "title": "Vegan Chocolate Rolls",
+      "description": "A delicious chocolate cake with a hint of spice. 3 units.",
       "price": 5.99,
-      "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
+      "image": "./assets/pics/cards/treats.jpeg",
       "category": "Treat",
       "nutritionalInfo": {
         "calories": 500,
@@ -46,13 +46,27 @@
       "id": "4",
       "title": "Basic Salad with Marinated Tofu",
       "description": "A delicious chickpea and mushroom curry with a hint of spice.",
-      "price": 5.99,
-      "image": "./assets/pics/Caprese-Spinach-Salad-350x240.jpg",
+      "price": 6.99,
+      "image": "./assets/pics/cards/Caprese-Spinach-Salad-350x240.jpg",
       "category": "Meal",
       "nutritionalInfo": {
         "calories": 150,
         "fat": 20,
         "carbs": 50,
+        "protein": 12
+      }
+    },
+    {
+      "id": "5",
+      "title": "Blueberry Muffins",
+      "description": "Delicious blueberry muffins with a hint of spice. 3 units.",
+      "price": 5.99,
+      "image": "./assets/pics/cards/blueberry-muffins-350x240.jpg",
+      "category": "Treat",
+      "nutritionalInfo": {
+        "calories": 300,
+        "fat": 25,
+        "carbs": 60,
         "protein": 12
       }
     }
