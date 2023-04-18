@@ -1,8 +1,9 @@
-<section *ngIf="cart$ | async as cart">
-  <div class="container">
+<section class="container" *ngIf="cart$ | async as cart">
+  <div>
     <p class="text-6xl text-center">Shopping Cart</p>
   </div>
 
+  <!--  <div *ngIf="cart.items.length">-->
   <ng-container *ngFor="let item of cart.items">
     <div
       class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
@@ -15,18 +16,31 @@
       </div>
       <div class="flex w-[150px] justify-between items-center">
         <p class="h-[20px] p-1.5"> {{item.price | currency}} </p>
-              <button mat-icon-button (click)="onRemoveQuantity(item)">
-                <mat-icon>remove</mat-icon>
-              </button>
-              <span class="bg-white">{{item.quantity}}</span>
-              <button mat-icon-button (click)="onAddQuantity(item)">
-                <mat-icon>add</mat-icon>
-              </button>
-              <button class="mt-1.5" (click)="onRemoveItem(item)">
-                <mat-icon>delete</mat-icon>
-              </button>
+        <button mat-icon-button (click)="onRemoveQuantity(item)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span class="bg-white">{{item.quantity}}</span>
+        <button mat-icon-button (click)="onAddQuantity(item)">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button class="mt-1.5" (click)="onRemoveItem(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </div>
   </ng-container>
+  <!--  </div>-->
+
+  <div *ngIf="!cart.items.length"
+       class="flex flex-col mt-10 justify-center items-center"
+  >
+    <h2 class="">Your shopping cart is empty.</h2>
+    <img class="max-w-[250px] max-h-[250px] my-16" src="assets/pics/empty-cart.png" alt="empty card">
+    <a mat-flat-button class="hover:bg-gray-400 hover:text-white" [routerLink]="['/product-category']">
+      <mat-icon>keyboard_backspace</mat-icon>
+      <span class="px-4">START SHOPPING</span>
+    </a>
+  </div>
+
   <h1> {{ total }} </h1>
 </section>
