@@ -5,6 +5,7 @@ import {MenuStore} from "../../store/menu/menu.store";
 import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
 import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";
 import {CartStore} from "../../store/cart/cart.store";
+import {MealOptionsService} from "../../services/meal-options/meal-options.service";
 
 @Component({
   selector: 'app-menu-items',
@@ -18,12 +19,21 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   deviceType!: breakpoint | undefined;
 
+  category: string = '';
+
   constructor(private readonly menuStore: MenuStore,
               private readonly cartStore: CartStore,
-              private readonly _breakpointObserverService: BreakpointObserverService
+              private readonly _breakpointObserverService: BreakpointObserverService,
+              private readonly mealOptionService: MealOptionsService
   ) {
-    this.menuStore.fetchMenuOptions('');
     this._breakpointObserverService.init();
+
+    this.mealOptionService.categorySelected.subscribe(category => {
+      this.category = category;
+      console.log(category)
+    });
+
+    this.menuStore.fetchMenuOptions(this.category);
 
   }
 

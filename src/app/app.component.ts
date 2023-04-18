@@ -11,14 +11,4 @@ import {Cart} from "./integration/menu/menu-model";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  cart: Cart = { items: [] };
-
-  constructor(private cartService: CartService) {
-  }
-
-  ngOnInit(): void {
-    this.cartService.cart.subscribe((_cart) => {
-      this.cart = _cart;
-    })
-  }
 }

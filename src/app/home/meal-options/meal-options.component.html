@@ -4,7 +4,7 @@
 
   <div class="pt-10">
     <mat-grid-list [cols]="this.deviceType == 'desktop' ? 3 : 1" rowHeight="320px" gutterSize="16px">
-      <a [routerLink]="['product-category/breakfast']">
+      <a class="cursor-pointer" (click)="onShowCategory('Breakfast')">
         <mat-grid-tile
           class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>
@@ -18,7 +18,7 @@
           </p>
         </mat-grid-tile>
       </a>
-      <a [routerLink]="['product-category/lunch']">
+      <a class="cursor-pointer" (click)="onShowCategory('Meal')">
         <mat-grid-tile
           class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>
@@ -27,11 +27,11 @@
                [src]="lunch" alt=""
           >
           <p class="absolute bottom-50 left-50 p-4 text-white text-4xl font-semibold group-hover:text-green-700">
-            Lunch
+            Meals
           </p>
         </mat-grid-tile>
       </a>
-      <a [routerLink]="['product-category/breakfast']">
+      <a class="cursor-pointer" (click)="onShowCategory('Treat')">
         <mat-grid-tile
           class="relative group">
           <div class="absolute inset-0 bg-black opacity-40"></div>

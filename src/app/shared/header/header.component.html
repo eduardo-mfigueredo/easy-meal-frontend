@@ -42,10 +42,10 @@
         </mat-icon>
       </a>
       <mat-menu #cart="matMenu">
-        <div class="p-4">
-          <p>In your cart: {{itemsQuantity}} items</p>
+        <div class="p-4" *ngIf="cart$ | async as cart">
+          <p>In your cart: {{ totalItemsOnCart(cart) }} items</p>
           <mat-divider></mat-divider>
-          <ng-container *ngFor="let item of _cart.items">
+          <ng-container *ngFor="let item of cart.items">
             <div
               class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
               <div class="p-2">

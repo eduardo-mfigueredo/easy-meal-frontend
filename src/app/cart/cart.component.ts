@@ -13,14 +13,19 @@ export class CartComponent {
   cart: Cart = {items: []};
   cart$?: Observable<Cart | undefined>;
 
+  total: number | undefined;
+
   constructor(
     private cartStore: CartStore
   ) {
-     this.cartStore.fetchCart(this.cart);
+     this.cartStore.fetchCart();
   }
 
   ngOnInit(): void {
     this.cart$ = this.cartStore.getCart();
+    this.cartStore.select(state => state.total).subscribe((total) => {
+      this.total = total;
+    });
   }
 
   onAddQuantity(menuOption: MenuOption): void {

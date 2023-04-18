@@ -69,6 +69,20 @@
         "carbs": 60,
         "protein": 12
       }
+    },
+    {
+      "id": "6",
+      "title": "Cashew Yogurt With Berries and Granola",
+      "description": "Bowl of cashew yogurt with berries and premium granola.",
+      "price": 6.50,
+      "image": "./assets/pics/cards/Greek-Yogurt-Nutrition.jpg",
+      "category": "Breakfast",
+      "nutritionalInfo": {
+        "calories": 330,
+        "fat": 15,
+        "carbs": 25,
+        "protein": 15
+      }
     }
   ]
 

@@ -7,6 +7,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 
 export interface CartState {
   cart?: Cart;
+  total?: number;
 }
 
 export const initialCartState: CartState = {};
@@ -18,13 +19,14 @@ export class CartStore extends ComponentStore<CartState> {
     super(initialCartState);
   }
 
-  readonly fetchCart = this.effect((cart$: Observable<Cart>) => {
-    return cart$.pipe(
+  readonly fetchCart = this.effect((fetchCart$: Observable<void>) => {
+    return fetchCart$.pipe(
       switchMap(() =>
         this._service.cart.pipe(
           tapResponse(
             (response) => {
               this.setCart(response);
+              this.setTotal(this._service.getTotal(response.items));
               this._service.saveCartToLocalStorage(response)
               console.log(response)
             },
@@ -71,8 +73,12 @@ export class CartStore extends ComponentStore<CartState> {
     );
   });
 
-  readonly setCart = this.updater((state, cart: Cart | undefined) => {
+  readonly setCart = this.updater((state, cart: Cart) => {
     return {...state, cart};
+  })
+
+  readonly setTotal = this.updater((state, total: number) => {
+    return {...state, total};
   })
 
   getCart(): Observable<Cart | undefined> {

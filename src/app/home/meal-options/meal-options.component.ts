@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
 import {Subscription} from "rxjs";
 import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";
+import {Router} from "@angular/router";
+import {MealOptionsService} from "../../services/meal-options/meal-options.service";
 
 @Component({
   selector: 'app-meal-options',
@@ -14,12 +16,13 @@ export class MealOptionsComponent {
   lunch: string = 'assets/pics/lunch.jpg'
   treats: string = 'assets/pics/treats.jpeg'
 
-
   subscriptions: Subscription[] = [];
   deviceType!: breakpoint | undefined;
 
   constructor(
-    private readonly _breakpointObserverService: BreakpointObserverService
+    private readonly _breakpointObserverService: BreakpointObserverService,
+    private readonly mealOptionService: MealOptionsService,
+    private router: Router
   ) {
     this._breakpointObserverService.init();
   }
@@ -30,6 +33,11 @@ export class MealOptionsComponent {
         this.deviceType = device;
       })
     );
+  }
+
+  onShowCategory(category: string): void {
+    this.mealOptionService.categorySelected.next(category);
+    this.router.navigate(['product-category']);
   }
 
   ngOnDestroy() {

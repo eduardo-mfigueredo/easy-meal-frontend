@@ -11,30 +11,24 @@ import {CartStore} from "../../store/cart/cart.store";
 export class HeaderComponent {
   showSideNav!: boolean;
   itemsQuantity: number = 0;
-  _cart: Cart = { items: [] };
   cart$?: Observable<Cart | undefined>;
   @Output() toggledSideNav: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private cartStore: CartStore) {
-    this.cartStore.fetchCart(this._cart);
+    this.cartStore.fetchCart();
   }
 
   ngOnInit(): void {
     this.cart$ = this.cartStore.getCart();
   }
+
   toggleSideNav() {
     this.toggledSideNav.emit();
     this.showSideNav = !this.showSideNav;
   }
 
-  @Input()
-  get cart(): Cart {
-    return this._cart;
-  }
-
-  set cart(cart: Cart){
-    this._cart = cart;
-    this.itemsQuantity =
+  totalItemsOnCart(cart: Cart): number {
+    return this.itemsQuantity =
       cart.items
         .map((item) => item.quantity)
         .reduce((prev, current) => prev + current, 0);

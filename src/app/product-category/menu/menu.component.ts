@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MenuStore} from "../../store/menu/menu.store";
 import {Subscription} from "rxjs";
 import {MenuService} from "../../integration/menu/menu.service";
@@ -9,12 +9,9 @@ import {MenuService} from "../../integration/menu/menu.service";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  @Output() showCategory = new EventEmitter<string>();
-
-  subscription!: Subscription;
 
   foods: string[] = [
-    'Treat', 'Meal'
+    'Breakfast', 'Meal', 'Treat'
   ];
 
   constructor(private menuStore: MenuStore) {
