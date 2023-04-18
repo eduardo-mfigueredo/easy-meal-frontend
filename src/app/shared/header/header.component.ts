@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Cart, MenuOption} from "../../integration/menu/menu-model";
 import {Observable} from "rxjs";
 import {CartStore} from "../../store/cart/cart.store";
@@ -10,7 +10,7 @@ import {CartStore} from "../../store/cart/cart.store";
 })
 export class HeaderComponent {
   showSideNav!: boolean;
-  itemsQuantity: number = 0;
+  itemsQuantity!: number ;
   cart$?: Observable<Cart | undefined>;
   @Output() toggledSideNav: EventEmitter<boolean> = new EventEmitter();
 

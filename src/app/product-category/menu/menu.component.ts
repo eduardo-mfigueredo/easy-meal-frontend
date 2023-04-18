@@ -1,7 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {MenuStore} from "../../store/menu/menu.store";
-import {Subscription} from "rxjs";
-import {MenuService} from "../../integration/menu/menu.service";
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +9,7 @@ import {MenuService} from "../../integration/menu/menu.service";
 export class MenuComponent {
 
   foods: string[] = [
-    'Breakfast', 'Meal', 'Treat'
+   'All', 'Breakfast', 'Meal', 'Treat'
   ];
 
   constructor(private menuStore: MenuStore) {
@@ -19,6 +17,9 @@ export class MenuComponent {
 
 
   onShowCategory(food: string) {
+    if(food === 'All') {
+      food = '';
+    }
     this.menuStore.fetchMenuOptions(food);
   }
 
