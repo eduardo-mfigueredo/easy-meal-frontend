@@ -18,6 +18,8 @@ import { CartCardComponent } from './cart/cart-card/cart-card.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CartStore} from "./store/cart/cart.store";
 import { LoginComponent } from './login/login.component';
+import { AdminAreaComponent } from './admin-area/admin-area.component';
+import {AdminAreaModule} from "./admin-area/admin-area.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     ProductCategoryComponent,
     CartComponent,
     CartCardComponent,
-    LoginComponent
+    LoginComponent,
+    AdminAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { LoginComponent } from './login/login.component';
     HomeModule,
     ProductCategoryModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminAreaModule,
 
   ],
   providers: [MenuStore, CartStore],

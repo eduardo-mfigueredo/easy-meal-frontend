@@ -1,0 +1,21 @@
+<section class="md:w-[75vw] h-[40vh]">
+
+  <div class="text-center">
+    <p class="text-xl md:text-3xl"> Select the next Cut Off time for next delivery</p>
+    <p class="md:text-2xl pt-10">Click on the calendar icon and choose a date</p>
+    <div class="flex flex-col items-center justify-center">
+      <mat-datepicker-toggle class="w-[100px] md:pl-6" [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <span *ngIf="selectedDate !== undefined" class="mt-4 text-xl"> You chose this date (mm/dd/yyyy):</span>
+      <input matInput #inputDate readonly class="text-4xl text-center pb-8" formControlName="dateInput"
+             [matDatepicker]="picker" (dateChange)="onInputChange(inputDate.value)">
+      <div *ngIf="selectedDate !== undefined" class="flex flex-col">
+        <button mat-flat-button class="bg-green-700 md:w-[40vw]">
+          <span class="inline-block py-2 text-2xl text-white">SET CUT OFF TIME</span>
+        </button>
+        <span class="mt-2 italic">*Note that the new cut off date will be setted right now, if you're not sure, just close this dialog</span>
+      </div>
+    </div>
+  </div>
+
+</section>
