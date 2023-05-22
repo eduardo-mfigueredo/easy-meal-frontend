@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CutOffSetterComponent} from "./cut-off-setter/cut-off-setter.component";
+import {AuthenticationService} from "../services/authentication/authentication.service";
+import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {User} from "../models/user";
 
 @Component({
   selector: 'app-admin-area',
@@ -9,10 +13,23 @@ import {CutOffSetterComponent} from "./cut-off-setter/cut-off-setter.component";
 })
 export class AdminAreaComponent {
 
-  constructor(private dialog: MatDialog) { }
+  user$!: Observable<User | undefined>;
+
+  constructor(
+    private dialog: MatDialog,
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
+    this.user$ = this.authService.user$!;
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(CutOffSetterComponent);
+  }
+
+  logout() {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
   }
 
 }
