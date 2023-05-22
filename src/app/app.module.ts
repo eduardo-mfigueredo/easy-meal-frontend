@@ -20,6 +20,8 @@ import {CartStore} from "./store/cart/cart.store";
 import { LoginComponent } from './login/login.component';
 import { AdminAreaComponent } from './admin-area/admin-area.component';
 import {AdminAreaModule} from "./admin-area/admin-area.module";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import {AdminAreaModule} from "./admin-area/admin-area.module";
     CartComponent,
     CartCardComponent,
     LoginComponent,
-    AdminAreaComponent
+    AdminAreaComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,16 @@ import {AdminAreaModule} from "./admin-area/admin-area.module";
     HttpClientModule,
     ReactiveFormsModule,
     AdminAreaModule,
-
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyAApB8w2LOnria5uvoMxtNUfBlJP-pJjuY",
+      authDomain: "easy-meal-65a53.firebaseapp.com",
+      projectId: "easy-meal-65a53",
+      storageBucket: "easy-meal-65a53.appspot.com",
+      messagingSenderId: "912145964513",
+      appId: "1:912145964513:web:0c6be120f52f0010ea86a0",
+      measurementId: "G-23CSB5KKXV"
+    }),
+    AngularFireAuthModule
   ],
   providers: [MenuStore, CartStore],
   bootstrap: [AppComponent]

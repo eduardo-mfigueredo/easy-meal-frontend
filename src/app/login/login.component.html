@@ -2,20 +2,22 @@
   <div class="max-w-[570px] my-0 mx-auto">
     <h1 class="text-center">Welcome back, nice to see you again!</h1>
     <p class="text-center">Please, sign in with e-mail</p>
-    <div class="flex flex-col mt-16 justify-center items-center">
-      <mat-form-field class="w-4/5" appearance="outline">
-        <mat-label>E-mail</mat-label>
-        <input matInput type="email"/>
-      </mat-form-field>
-      <mat-form-field class="w-4/5" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password"/>
-      </mat-form-field>
-    </div>
-    <div class="flex justify-end mr-14">
-      <button mat-flat-button class="bg-green-700 text-white">
-        <span class="p-8">Sign in</span>
-      </button>
-    </div>
+    <form [formGroup]="form">
+      <div class="flex flex-col mt-16 justify-center items-center">
+        <mat-form-field class="w-4/5" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" />
+        </mat-form-field>
+        <mat-form-field class="w-4/5" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+        <div class="flex justify-end mr-14">
+          <button mat-flat-button class="bg-green-700 text-white" [disabled]="!form.valid" (click)="login()">
+            <span class="p-8">LOGIN</span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </section>
