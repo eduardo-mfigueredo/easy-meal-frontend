@@ -5,6 +5,7 @@ import {AuthenticationService} from "../services/authentication/authentication.s
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
+import {MenuHandlerComponent} from "./menu-handler/menu-handler.component";
 
 @Component({
   selector: 'app-admin-area',
@@ -23,8 +24,12 @@ export class AdminAreaComponent {
     this.user$ = this.authService.user$!;
   }
 
-  openDialog() {
+  openCutOffSetter() {
     const dialogRef = this.dialog.open(CutOffSetterComponent);
+  }
+
+  openMenuHandler() {
+    const dialogRef = this.dialog.open(MenuHandlerComponent);
   }
 
   logout() {

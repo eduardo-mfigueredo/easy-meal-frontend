@@ -6,14 +6,14 @@
   </div>
 
   <div class="flex flex-col items-center gap-8 text-center mt-12">
-    <button mat-flat-button class="bg-green-700 md:w-[40vw]" (click)="openDialog()">
+    <button mat-flat-button class="bg-green-700 md:w-[40vw]" (click)="openCutOffSetter()">
       <span class="inline-block py-4 text-3xl text-white">Set Next Cut Off</span>
     </button>
-    <button mat-raised-button class="bg-green-700 md:w-[40vw]">
-      <span class="inline-block py-4 text-3xl text-white" (click)="openDialog()">Manage Menu</span>
+    <button mat-raised-button class="bg-green-700 md:w-[40vw]" (click)="openMenuHandler()">
+      <span class="inline-block py-4 text-3xl text-white" >Manage Menu</span>
     </button>
-    <button mat-raised-button class="bg-green-700 md:w-[40vw]">
-      <span class="inline-block py-4 text-3xl text-white" (click)="logout()">Logout</span>
+    <button mat-raised-button class="bg-green-700 md:w-[40vw]" (click)="logout()">
+      <span class="inline-block py-4 text-3xl text-white">Logout</span>
     </button>
   </div>
 </section>
