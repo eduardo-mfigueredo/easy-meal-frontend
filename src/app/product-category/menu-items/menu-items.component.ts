@@ -21,24 +21,24 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
 
   category: string = '';
 
-  constructor(private readonly menuStore: MenuStore,
-              private readonly cartStore: CartStore,
-              private readonly _breakpointObserverService: BreakpointObserverService,
-              private readonly mealOptionService: MealOptionsService
+  constructor(
+    private readonly menuStore: MenuStore,
+    private readonly cartStore: CartStore,
+    private readonly _breakpointObserverService: BreakpointObserverService,
+    private readonly mealOptionService: MealOptionsService,
   ) {
     this._breakpointObserverService.init();
 
     this.mealOptionService.categorySelected.subscribe(category => {
       this.category = category;
-      console.log(category)
     });
 
     this.menuStore.fetchMenuOptions(this.category);
-
   }
 
   ngOnInit(): void {
     this.menuOptions$ = this.menuStore.getMenuOptions;
+
     this.subscriptions.push(
       this._breakpointObserverService.breakpointSize$.subscribe(device => {
         this.deviceType = device;

@@ -4,6 +4,7 @@ import {ComponentStore, tapResponse} from "@ngrx/component-store";
 import {catchError, EMPTY, Observable, switchMap} from "rxjs";
 import {MenuService} from "../../integration/menu/menu.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {FirestoreService} from "../../services/firestore/firestore.service";
 
 export interface MenuState {
   menuOptions?: MenuOption[];
@@ -15,21 +16,21 @@ export const initialMenuState: MenuState = {};
 @Injectable()
 export class MenuStore extends ComponentStore<MenuState> {
 
-  constructor(private _service: MenuService) {
+  constructor(private _service: FirestoreService) {
     super(initialMenuState);
   }
 
   readonly fetchMenuOptions = this.effect((category$: Observable<string> ) => {
     return category$.pipe(
       switchMap((category) =>
-        this._service.getMenuOptions(category).pipe(
+        this._service.getItems(category).pipe(
           tapResponse(
             (response) => {
               this.setMenuOptions(response);
               console.log(response)
             },
             (error: HttpErrorResponse) => {
-              console.log('deu error --');
+              console.log('error.');
             }
           ),
           catchError(() => EMPTY)
