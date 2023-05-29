@@ -7,15 +7,17 @@ import {MenuOption} from "../../integration/menu/menu-model";
   providedIn: 'root'
 })
 export class FirestoreService {
-  private collectionName = 'menu-options';
-  private collection: AngularFirestoreCollection<any>;
+  private collectionMenuOptions: AngularFirestoreCollection<any>;
+  private collectionCutoff: AngularFirestoreCollection<any>;
 
   constructor(private firestore: AngularFirestore) {
-    this.collection = firestore.collection(this.collectionName);
+    this.collectionMenuOptions = firestore.collection('menu-options');
+    this.collectionCutoff = firestore.collection('cut-off-time');
   }
 
+
   getItems(category: string | null): Observable<MenuOption[]> {
-    return this.collection.valueChanges().pipe(
+    return this.collectionMenuOptions.valueChanges().pipe(
       map((response: MenuOption[]) => {
           if (category) {
             return response.filter((menuOption: MenuOption) => {
@@ -30,7 +32,15 @@ export class FirestoreService {
   }
 
   addItem(item: any): Promise<any> {
-    return this.collection.add(item);
+    return this.collectionMenuOptions.add(item);
+  }
+
+  getCutoff(): Observable<any> {
+    return this.collectionCutoff.valueChanges();
+  }
+
+  setCutOff(cutoff: string): void {
+    this.firestore.collection('cut-off-time').doc('yES9VeXntFVPAjsUj2pd').set({cutoff: cutoff});
   }
 
 }

@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {interval, Subscription} from "rxjs";
+import {FirestoreService} from "../../services/firestore/firestore.service";
 
 @Component({
   selector: 'app-countdown',
@@ -10,7 +11,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription();
 
-  public dDay = new Date('Apr 15 2023 00:00:00');
+  public dDay! : Date;
   milliSecondsInASecond: number = 1000;
   hoursInADay: number = 24;
   minutesInAnHour: number = 60;
@@ -22,6 +23,9 @@ export class CountdownComponent implements OnInit, OnDestroy {
   public hoursToDday!: number;
   public daysToDday!: number;
 
+
+  constructor(private firestore: FirestoreService) {
+  }
 
   private getTimeDifference() {
     this.timeDifference = this.dDay.getTime() - new Date().getTime();
@@ -36,10 +40,15 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.firestore.getCutoff().subscribe((response: any) => {
+      this.dDay = new Date(response[0].cutoff);
+    });
+
     this.subscription = interval(1000)
       .subscribe(x => {
         this.getTimeDifference();
       });
+
   }
 
   ngOnDestroy() {
