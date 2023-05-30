@@ -1,1 +1,21 @@
-<p>menu-handler works!</p>
+<section *ngIf="menuOptions$ | async as menuOptions" class="w-[90vw] h-[90vh]">
+  <div>
+    <button mat-flat-button>
+      <mat-icon>add</mat-icon>
+      ADD
+    </button>
+  </div>
+  <div class="flex gap-2">
+    <div *ngFor="let option of menuOptions" class="border-2 border-amber-100 h-fit">
+      <h2>{{ option.title }}</h2>
+      <p> {{ option.description }} </p>
+      <p> {{ option.price }}</p>
+      <div><img src="{{ option.image }}" alt="" class="max-w-[200px]"></div>
+      <p> {{ option.category }} </p>
+      <p> {{ option.nutritionalInfo.calories }} </p>
+      <p> {{ option.nutritionalInfo.fat }} </p>
+      <p> {{ option.nutritionalInfo.carbs }} </p>
+      <p> {{ option.nutritionalInfo.protein }} </p>
+    </div>
+  </div>
+</section>
