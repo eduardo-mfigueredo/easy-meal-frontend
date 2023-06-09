@@ -1,0 +1,50 @@
+<section>
+  <div class="flex justify-between items-center mb-4">
+    <h3>New Menu Option</h3>
+    <button class="flex items-center" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+      <span>CLOSE</span>
+    </button>
+  </div>
+  <form [formGroup]="form">
+    <div class="flex flex-col">
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Description" formControlName="description">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Price" formControlName="price">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Category" formControlName="category">
+      </mat-form-field>
+    </div>
+    <h4>Nutricional Info:</h4>
+    <div class="flex gap-4">
+      <mat-form-field>
+        <input matInput placeholder="Calories" formControlName="calories">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Protein" formControlName="protein">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Carbs" formControlName="carbs">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Fat" formControlName="fat">
+      </mat-form-field>
+    </div>
+    <div class="w-full pb-4">
+      <p>Upload project image</p>
+      <input type="file" accept="image/*" id="image" (change)="onFileChange($event)">
+      <img id="previewImage" src="" alt="">
+    </div>
+    <button mat-flat-button class="flex justify-center items-center bg-green-700 text-white" type="submit"
+            (click)="submit()">
+      <mat-icon>add</mat-icon>
+      <span>Add</span>
+    </button>
+  </form>
+</section>

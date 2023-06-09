@@ -1,7 +1,3 @@
-// export interface MenuModel {
-//   menuOption: MenuOption[]
-// }
-
 export interface MenuOption {
   id: string
   title: string
