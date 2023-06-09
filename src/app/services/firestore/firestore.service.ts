@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
-import {MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../models/menu-model";
 
 @Injectable({
   providedIn: 'root'

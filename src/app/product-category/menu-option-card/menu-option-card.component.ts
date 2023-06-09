@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../models/menu-model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({

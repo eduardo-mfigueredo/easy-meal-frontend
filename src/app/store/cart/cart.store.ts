@@ -1,4 +1,4 @@
-import {Cart, MenuOption} from "../../integration/menu/menu-model";
+import {Cart, MenuOption} from "../../models/menu-model";
 import {ComponentStore, tapResponse} from "@ngrx/component-store";
 import {Injectable} from "@angular/core";
 import {catchError, EMPTY, map, Observable, switchMap, tap} from "rxjs";

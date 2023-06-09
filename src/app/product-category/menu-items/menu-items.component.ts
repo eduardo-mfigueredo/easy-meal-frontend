@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
-import {MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../models/menu-model";
 import {MenuStore} from "../../store/menu/menu.store";
 import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
 import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";

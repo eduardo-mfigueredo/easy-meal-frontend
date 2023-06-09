@@ -1,4 +1,4 @@
-import {MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../models/menu-model";
 import {Injectable} from "@angular/core";
 import {ComponentStore, tapResponse} from "@ngrx/component-store";
 import {catchError, EMPTY, Observable, switchMap} from "rxjs";

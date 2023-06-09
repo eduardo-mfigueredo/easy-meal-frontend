@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {Cart, MenuOption} from "../../integration/menu/menu-model";
+import {Cart, MenuOption} from "../../models/menu-model";
 import {Observable} from "rxjs";
 import {CartStore} from "../../store/cart/cart.store";
 

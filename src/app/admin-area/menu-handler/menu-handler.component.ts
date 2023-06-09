@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FirestoreService} from "../../services/firestore/firestore.service";
 import {Observable} from "rxjs";
-import {MenuOption} from "../../integration/menu/menu-model";
+import {MenuOption} from "../../models/menu-model";
 
 @Component({
   selector: 'app-menu-handler',

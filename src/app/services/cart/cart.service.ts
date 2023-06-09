@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Cart, MenuOption} from "../../integration/menu/menu-model";
+import {Cart, MenuOption} from "../../models/menu-model";
 
 const KEY = 'cart';
 
@@ -54,7 +54,7 @@ export class CartService {
 
     let filteredItems = this.cart.value.items.map(
       (_item) => {
-        if (_item.id === menuOption.id) {
+        if (_item.title === menuOption.title) {
           _item.quantity--;
           if (_item.quantity === 0) {
             itemForRemoval = _item;

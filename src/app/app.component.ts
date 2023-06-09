@@ -3,7 +3,7 @@ import {BreakpointObserverService} from "./services/breakpoint-observer/breakpoi
 import {Subscription} from "rxjs";
 import {breakpoint} from "./services/breakpoint-observer/breakpoints";
 import {CartService} from "./services/cart/cart.service";
-import {Cart} from "./integration/menu/menu-model";
+import {Cart} from "./models/menu-model";
 
 @Component({
   selector: 'app-root',

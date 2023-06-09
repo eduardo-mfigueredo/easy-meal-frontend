@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Cart, MenuOption} from "../integration/menu/menu-model";
+import {Cart, MenuOption} from "../models/menu-model";
 import {CartService} from "../services/cart/cart.service";
 import {CartStore} from "../store/cart/cart.store";
 import {Observable, Subscription} from "rxjs";
