@@ -66,6 +66,7 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
         protein: menuOption.nutritionalInfo.protein
       }
     });
+    console.log(menuOption)
   }
 
 }

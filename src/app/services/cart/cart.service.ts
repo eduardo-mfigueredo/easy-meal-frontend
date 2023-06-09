@@ -34,9 +34,11 @@ export class CartService {
 
   addToCart(menuOption: MenuOption): Cart {
     const items = [...this.cart.value.items];
-    const itemInCart = items.find((_item) => _item.id === menuOption.id);
+    const itemInCart = items.find((_item) =>
+      _item.title === menuOption.title
+    );
     if (itemInCart) {
-      itemInCart.quantity += 1;
+      itemInCart.quantity += menuOption.quantity;
     } else {
       items.push(menuOption)
     }
@@ -81,10 +83,10 @@ export class CartService {
     this._snackBar.open('Empty cart.', 'Ok', {duration: 3000})
   }
 
-  removeFromCart(item: MenuOption, update = true): Array<MenuOption> {
+  removeFromCart(menuOption: MenuOption, update = true): Array<MenuOption> {
     const filteredItems =
       this.cart.value.items.filter(
-        (_item) => _item.id !== item.id
+        (_item) => _item.title !== menuOption.title
       );
     if (update) {
       this.cart.next({items: filteredItems});
