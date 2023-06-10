@@ -1,10 +1,8 @@
-<div *ngIf="menuOptions$ | async as menuOptions" class="container">
-  <mat-grid-list rowHeight="592px" [cols]="this.deviceType == 'desktop' ? 3 : 1">
-    <mat-grid-tile *ngFor="let menuOption of menuOptions">
-      <app-menu-option-card
-        [menuOption]="menuOption"
-        (addToCart)="onAddToCart($event)"
-      ></app-menu-option-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div *ngIf="menuOptions$ | async as menuOptions" class="flex flex-wrap justify-center gap-6 pb-20">
+  <div *ngFor="let menuOption of menuOptions">
+    <app-menu-option-card
+      [menuOption]="menuOption"
+      (addToCart)="onAddToCart($event)"
+    ></app-menu-option-card>
+  </div>
 </div>

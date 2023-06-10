@@ -5,6 +5,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
+  //height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -14,7 +15,8 @@ body {
 
 .container {
   width: 90vw;
+  //max-width: 900px; /* Added a max-width to limit the container's width */
   margin: 0 auto;
-  margin-top: 120px;
-  margin-bottom: 80px;
+  padding-top: 120px; /* Changed margin-top to padding-top for better spacing */
+  padding-bottom: 80px; /* Changed margin-bottom to padding-bottom for better spacing */
 }
