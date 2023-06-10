@@ -51,6 +51,17 @@ export class CartStore extends ComponentStore<CartState> {
     );
   });
 
+  readonly addQuantityToCart = this.effect((menuOption$: Observable<MenuOption>) => {
+    return menuOption$.pipe(
+      map((menuOption) => this._service.addQuantityToCart(menuOption)),
+      tap((cart) => {
+        this.setCart(cart);
+        this._service.saveCartToLocalStorage(cart);
+      }),
+      catchError(() => EMPTY)
+    );
+  });
+
   readonly removeQuantity = this.effect((menuOption$: Observable<MenuOption>) => {
     return menuOption$.pipe(
       map((menuOption) => this._service.removeQuantity(menuOption)),

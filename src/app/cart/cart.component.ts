@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {Cart, MenuOption} from "../models/menu-model";
-import {CartService} from "../services/cart/cart.service";
 import {CartStore} from "../store/cart/cart.store";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -29,7 +28,7 @@ export class CartComponent {
   }
 
   onAddQuantity(menuOption: MenuOption): void {
-    this.cartStore.addToCart(menuOption);
+    this.cartStore.addQuantityToCart(menuOption);
   }
 
   onRemoveQuantity(menuOption: MenuOption): void {

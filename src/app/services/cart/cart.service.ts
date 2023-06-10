@@ -39,6 +39,24 @@ export class CartService {
     );
     if (itemInCart) {
       console.log(itemInCart);
+      itemInCart.quantity += menuOption.quantity;
+    } else {
+      items.push(menuOption)
+    }
+    this.cart.next({items});
+    localStorage.setItem(KEY, JSON.stringify(this.cart.value));
+    this._snackBar.open('Item added', 'Ok', {duration: 3000});
+    console.log(this.cart.value);
+    return this.cart.value;
+  }
+
+  addQuantityToCart(menuOption: MenuOption): Cart {
+    const items = [...this.cart.value.items];
+    const itemInCart = items.find((_item) =>
+      _item.id === menuOption.id
+    );
+    if (itemInCart) {
+      console.log(itemInCart);
       itemInCart.quantity += 1;
     } else {
       items.push(menuOption)
