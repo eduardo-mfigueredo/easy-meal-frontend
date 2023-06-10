@@ -3,7 +3,7 @@ export interface MenuOption {
   title: string
   description: string
   price: number
-  image: string
+  image: string;
   category: string
   nutritionalInfo: NutritionalInfo
   quantity: number;

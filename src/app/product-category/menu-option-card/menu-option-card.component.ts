@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MenuOption} from "../../models/menu-model";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-menu-option-card',
@@ -13,12 +12,22 @@ export class MenuOptionCardComponent {
 
   @Output() addToCart = new EventEmitter<MenuOption>();
 
-  // form = this.fb.group({
-  //   quantity: new FormControl<number>({value: 1, disabled: false}, Validators.min(1))
-  // })
-  // constructor(private fb: FormBuilder) { }
+  ngOnInit(): void {
+    this.menuOption.quantity = 0;
+  }
+
+  decrementQuantity(): void {
+    if (this.menuOption.quantity > 0) {
+      this.menuOption.quantity -= 1;
+    }
+  }
+
+  incrementQuantity(): void {
+    this.menuOption.quantity += 1;
+  }
+
+
   onAddToCart(): void {
     this.addToCart.emit(this.menuOption)
   }
-
 }

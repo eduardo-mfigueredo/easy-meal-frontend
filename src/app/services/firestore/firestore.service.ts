@@ -17,22 +17,47 @@ export class FirestoreService {
 
 
   getItems(category: string | null): Observable<MenuOption[]> {
-    return this.collectionMenuOptions.valueChanges().pipe(
+    return this.collectionMenuOptions.snapshotChanges().pipe(
+      map((snapshot) => {
+        return snapshot.map((doc) => {
+          const id = doc.payload.doc.id;
+          const data = doc.payload.doc.data();
+          return {id, ...data} as MenuOption;
+        });
+      }),
       map((response: MenuOption[]) => {
-          if (category) {
-            return response.filter((menuOption: MenuOption) => {
-              return menuOption.category == category;
-            });
-          } else {
-            return response;
-          }
+        if (category) {
+          return response.filter((menuOption: MenuOption) => {
+            return menuOption.category == category;
+          });
+        } else {
+          return response;
         }
-      )
+      })
     );
   }
 
+
   addItem(item: any): Promise<any> {
     return this.collectionMenuOptions.add(item);
+  }
+
+  updateDocumentById(newData: {
+    image: string | undefined;
+    nutritionalInfo: { carbs: any; protein: any; fat: any; calories: any };
+    price: any;
+    description: any;
+    id: string;
+    title: any;
+    category: any
+  }, id: string): Promise<void> {
+    const docRef = this.collectionMenuOptions.doc<MenuOption>(id);
+    return docRef.update(newData);
+  }
+
+  deleteDocumentById(id: string): Promise<void> {
+    const docRef = this.collectionMenuOptions.doc<MenuOption>(id);
+    return docRef.delete();
   }
 
   getCutoff(): Observable<any> {

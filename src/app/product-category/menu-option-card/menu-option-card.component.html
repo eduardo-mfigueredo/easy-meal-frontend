@@ -20,16 +20,26 @@
   <img src="{{menuOption.image}}" alt="">
   <div class="border-l-2 border-r-2 border-b-2 border-gray-200 rounded p-4">
     <h2 class="font-bold">{{ menuOption.title }}</h2>
-    <p> {{ menuOption.description }}</p>
+    <p class="line-clamp-4"> {{ menuOption.description }}</p>
     <span class="font-bold"> {{ menuOption.price | currency }}</span>
 
     <div class="flex justify-around mt-4">
-      <div class="flex items-center">
-        <mat-form-field appearance="outline" class="max-w-[125px] h-[55px]">
-          <mat-label>Quantity</mat-label>
-          <input matInput type="number" [(ngModel)]="menuOption.quantity" >
-        </mat-form-field>
+<!--      <div class="flex items-center">-->
+<!--        <mat-form-field appearance="outline" class="max-w-[125px] h-[55px]">-->
+<!--          <mat-label>Quantity</mat-label>-->
+<!--          <input matInput type="number" [(ngModel)]="menuOption.quantity" >-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+      <div>
+      <button mat-icon-button (click)="decrementQuantity()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span class="bg-white">{{ menuOption.quantity }} </span>
+      <button mat-icon-button (click)="incrementQuantity()">
+        <mat-icon>add</mat-icon>
+      </button>
       </div>
+
       <button mat-button class="flex bg-green-700 rounded text-white items-center pl-6 pr-6"
               (click)="onAddToCart()"
               [disabled]="menuOption.quantity == undefined || menuOption.quantity <= 0"

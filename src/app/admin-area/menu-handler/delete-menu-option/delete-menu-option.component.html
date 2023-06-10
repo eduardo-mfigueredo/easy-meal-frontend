@@ -1,0 +1,19 @@
+<section>
+  <h1 class="sm:text-4xl mb-8">Are you sure you want to delete menu option #{{option.title}}?</h1>
+  <div class="flex flex-col sm:flex-row gap-8">
+    <button
+      type="submit" value="confirm" (click)="onConfirm()"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                     block w-full py-2 px-12 resize-none cursor-pointer bg-color-primary
+                     text-color-white hover:bg-color-secondary">
+      Confirm
+    </button>
+    <button
+      type="submit" value="cancel" (click)="onCancel()"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                     block w-full py-2 px-12 resize-none cursor-pointer bg-color-primary
+                     text-color-white hover:bg-color-secondary">
+      Cancel
+    </button>
+  </div>
+</section>

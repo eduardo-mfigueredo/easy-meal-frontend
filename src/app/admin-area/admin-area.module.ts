@@ -5,8 +5,9 @@ import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MenuHandlerComponent} from './menu-handler/menu-handler.component';
-import { AddMenuOptionComponent } from './menu-handler/add-menu-option/add-menu-option.component';
-import { EditMenuOptionComponent } from './menu-handler/edit-menu-option/edit-menu-option.component';
+import {AddMenuOptionComponent} from './menu-handler/add-menu-option/add-menu-option.component';
+import {EditMenuOptionComponent} from './menu-handler/edit-menu-option/edit-menu-option.component';
+import {DeleteMenuOptionComponent} from "./menu-handler/delete-menu-option/delete-menu-option.component";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { EditMenuOptionComponent } from './menu-handler/edit-menu-option/edit-me
     CutOffSetterComponent,
     MenuHandlerComponent,
     AddMenuOptionComponent,
-    EditMenuOptionComponent
+    EditMenuOptionComponent,
+    DeleteMenuOptionComponent
   ],
   exports: [
     CutOffSetterComponent,

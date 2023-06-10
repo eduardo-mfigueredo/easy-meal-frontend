@@ -69,26 +69,26 @@ export class EditMenuOptionComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  submit(): void {
-    // console.log(this.form.value);
-    // console.log(this.form.valid);
+  onSubmit(): void {
     if (this.form.valid) {
-      this.firestoreService.addItem(
-        {
-          title: this.form.value.title,
-          description: this.form.value.description,
-          price: this.form.value.price,
-          category: this.form.value.category,
-          nutritionalInfo: {
-            calories: this.form.value.calories,
-            protein: this.form.value.protein,
-            carbs: this.form.value.carbs,
-            fat: this.form.value.fat,
-          },
-          image: this.imageUrl,
+      const newData = {
+        id: this.menuOption.id,
+        title: this.form.value.title,
+        description: this.form.value.description,
+        price: this.form.value.price,
+        category: this.form.value.category,
+        image: this.imageUrl,
+        nutritionalInfo: {
+          calories: this.form.value.calories,
+          protein: this.form.value.protein,
+          carbs: this.form.value.carbs,
+          fat: this.form.value.fat,
         }
-      )
-      this.router.navigate(['/admin']);
+      };
+      this.firestoreService.updateDocumentById(newData, this.menuOption.id);
+      this.dialogRef.close();
     }
   }
+
+
 }

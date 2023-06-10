@@ -35,10 +35,11 @@ export class CartService {
   addToCart(menuOption: MenuOption): Cart {
     const items = [...this.cart.value.items];
     const itemInCart = items.find((_item) =>
-      _item.title === menuOption.title
+      _item.id === menuOption.id
     );
     if (itemInCart) {
-      itemInCart.quantity += menuOption.quantity;
+      console.log(itemInCart);
+      itemInCart.quantity += 1;
     } else {
       items.push(menuOption)
     }
@@ -54,7 +55,7 @@ export class CartService {
 
     let filteredItems = this.cart.value.items.map(
       (_item) => {
-        if (_item.title === menuOption.title) {
+        if (_item.id === menuOption.id) {
           _item.quantity--;
           if (_item.quantity === 0) {
             itemForRemoval = _item;
@@ -86,7 +87,7 @@ export class CartService {
   removeFromCart(menuOption: MenuOption, update = true): Array<MenuOption> {
     const filteredItems =
       this.cart.value.items.filter(
-        (_item) => _item.title !== menuOption.title
+        (_item) => _item.id !== menuOption.id
       );
     if (update) {
       this.cart.next({items: filteredItems});

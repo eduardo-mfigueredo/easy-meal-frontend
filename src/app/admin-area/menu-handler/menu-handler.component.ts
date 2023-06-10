@@ -5,6 +5,7 @@ import {MenuOption} from "../../models/menu-model";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AddMenuOptionComponent} from "./add-menu-option/add-menu-option.component";
 import {EditMenuOptionComponent} from "./edit-menu-option/edit-menu-option.component";
+import {DeleteMenuOptionComponent} from "./delete-menu-option/delete-menu-option.component";
 
 @Component({
   selector: 'app-menu-handler',
@@ -19,7 +20,8 @@ export class MenuHandlerComponent implements OnInit {
     private firestoreService: FirestoreService,
     private dialog: MatDialog,
     private matRef: MatDialogRef<MenuHandlerComponent>
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.menuOptions$ = this.firestoreService.getItems('');
@@ -35,5 +37,9 @@ export class MenuHandlerComponent implements OnInit {
 
   onClose(): void {
     this.matRef.close();
+  }
+
+  onDeleteMenuOption(option: MenuOption) {
+    this.dialog.open(DeleteMenuOptionComponent, { data: option })
   }
 }
