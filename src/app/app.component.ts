@@ -1,9 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {BreakpointObserverService} from "./services/breakpoint-observer/breakpoint-observer.service";
-import {Subscription} from "rxjs";
-import {breakpoint} from "./services/breakpoint-observer/breakpoints";
-import {CartService} from "./services/cart/cart.service";
-import {Cart} from "./models/menu-model";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',

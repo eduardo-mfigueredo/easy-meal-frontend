@@ -1,13 +1,14 @@
 <section class="container" *ngIf="cart$ | async as cart">
   <div>
-    <p class="text-6xl text-center">Shopping Cart</p>
+    <p class="text-3xl md:text-6xl text-center">Shopping Cart</p>
   </div>
 
   <ng-container *ngFor="let item of cart.items">
     <div
-      class="flex max-md:flex-col max-md:w-[90vw] justify-between max-w-[700px] p-4 my-2 mx-auto border border-amber-100 bg-gray-50">
+      class="flex max-md:flex-col max-md:w-[90vw] justify-between
+      items-center max-w-[800px] p-8 my-2 mx-auto shadow-lg">
       <div class="p-2">
-        <img class="w-[80px] h-[50px]" src="{{item.image}}" alt="image">
+        <img class="md:max-w-[175px]" src="{{item.image}}" alt="image">
       </div>
       <div>
         <p class="text-2xl"> {{item.title}} </p>
@@ -29,6 +30,13 @@
     </div>
   </ng-container>
 
+  <div class="max-w-[800px] flex flex-col sm:flex-row justify-between items-center mx-auto mt-8">
+    <p class="text-2xl md:text-3xl">Total: {{ total | currency }}</p>
+    <button mat-raised-button class="bg-green-700">
+      <span class="inline-block py-4 px-8 text-2xl text-white">Checkout</span>
+    </button>
+  </div>
+
   <div *ngIf="!cart.items.length"
        class="flex flex-col mt-10 justify-center items-center"
   >
@@ -39,8 +47,6 @@
       <span class="px-4">START SHOPPING</span>
     </a>
   </div>
-
-  <h1> {{ total }} </h1>
 </section>
 
 

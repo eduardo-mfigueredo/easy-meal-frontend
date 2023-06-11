@@ -3,7 +3,6 @@ import {Observable, Subscription} from "rxjs";
 import {MenuOption} from "../../models/menu-model";
 import {MenuStore} from "../../store/menu/menu.store";
 import {breakpoint} from "../../services/breakpoint-observer/breakpoints";
-import {BreakpointObserverService} from "../../services/breakpoint-observer/breakpoint-observer.service";
 import {CartStore} from "../../store/cart/cart.store";
 import {MealOptionsService} from "../../services/meal-options/meal-options.service";
 
@@ -24,11 +23,8 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly menuStore: MenuStore,
     private readonly cartStore: CartStore,
-    private readonly _breakpointObserverService: BreakpointObserverService,
     private readonly mealOptionService: MealOptionsService,
   ) {
-    this._breakpointObserverService.init();
-
     this.mealOptionService.categorySelected.subscribe(category => {
       this.category = category;
     });
@@ -38,12 +34,6 @@ export class MenuItemsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.menuOptions$ = this.menuStore.getMenuOptions;
-
-    this.subscriptions.push(
-      this._breakpointObserverService.breakpointSize$.subscribe(device => {
-        this.deviceType = device;
-      })
-    );
   }
 
   ngOnDestroy() {
