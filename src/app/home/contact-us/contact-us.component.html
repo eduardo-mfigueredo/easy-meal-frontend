@@ -1,0 +1,31 @@
+<section id="contact-us" class="container">
+
+  <p class="text-3xl sm:text-4xl md:text-6xl text-center pb-16">Any further question? Contact us!</p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col sm:w-2/3 lg:w-1/2 mx-auto">
+    <mat-form-field appearance="outline">
+      <mat-label>Your name</mat-label>
+      <input matInput formControlName="name" placeholder="Your name"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Your email</mat-label>
+      <input matInput formControlName="email" placeholder="Your email"/>
+    </mat-form-field>
+    <mat-form-field class="" appearance="outline">
+          <textarea
+            formControlName="message"
+            rows="10"
+            class="resize-none pr-4"
+            matInput
+            label="Your message"
+            placeholder="Your message"
+          ></textarea>
+    </mat-form-field>
+    <button mat-flat-button type="submit" class="bg-green-700 text-white"
+            (click)="onSubmit()"
+            [disabled]="!this.form.valid">
+      <span>Submit</span>
+    </button>
+  </form>
+
+</section>

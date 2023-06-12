@@ -31,9 +31,9 @@
         <button mat-menu-item>All Meals</button>
         <button mat-menu-item>Custom</button>
       </mat-menu>
-      <a mat-button href="" class="px-6 text-lg">ABOUT</a>
-      <a mat-button href="" class="px-6 text-lg">FAQ</a>
-      <a mat-button href="" class="px-6 text-lg">CONTACT US</a>
+      <a mat-button (click)="scrollToSection('how-it-works')" class="px-6 text-lg">ABOUT</a>
+      <a mat-button (click)="scrollToSection('faq')" class="px-6 text-lg">FAQ</a>
+      <a mat-button (click)="scrollToSection('contact-us')" class="px-6 text-lg">CONTACT US</a>
       <a mat-button [matMenuTriggerFor]="cart">
         <mat-icon [matBadge]="itemsQuantity"
                   [matBadgeHidden]="!itemsQuantity"
@@ -87,9 +87,9 @@
         <button mat-menu-item>All Meals</button>
         <button mat-menu-item>Custom</button>
       </mat-menu>
-      <button mat-button class="px-6">ABOUT</button>
-      <button mat-button class="px-6">FAQ</button>
-      <button mat-button class="px-6">CONTACT US</button>
+      <button mat-button (click)="scrollToSection('how-it-works')" class="px-6">ABOUT</button>
+      <button mat-button (click)="scrollToSection('faq')" class="px-6">FAQ</button>
+      <button mat-button (click)="scrollToSection('contact-us')" class="px-6">CONTACT US</button>
       <button mat-button [matMenuTriggerFor]="cart" (click)="$event.stopPropagation()">
         <mat-icon [matBadge]="itemsQuantity"
                   [matBadgeHidden]="!itemsQuantity"

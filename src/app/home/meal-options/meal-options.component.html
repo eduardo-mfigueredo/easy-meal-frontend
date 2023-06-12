@@ -1,13 +1,13 @@
 <section class="container">
 
-  <p class="text-6xl text-center">Meal Options</p>
+<!--  <p class="text-3xl sm:text-4xl md:text-6xl text-center py-8">Meal Options</p>-->
 
-  <div class="pt-10">
+  <div>
     <mat-grid-list [cols]="this.deviceType == 'desktop' ? 3 : 1" rowHeight="320px" gutterSize="16px">
       <a class="cursor-pointer" (click)="onShowCategory('Breakfast')">
         <mat-grid-tile
-          class="relative group">
-          <div class="absolute inset-0 bg-black opacity-40"></div>
+          class="relative">
+          <div class="absolute inset-0 bg-black"></div>
           <img
             class="w-full h-full object-cover transition-transform duration-300
                    transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
@@ -20,8 +20,8 @@
       </a>
       <a class="cursor-pointer" (click)="onShowCategory('Meal')">
         <mat-grid-tile
-          class="relative group">
-          <div class="absolute inset-0 bg-black opacity-40"></div>
+          class="relative">
+          <div class="absolute inset-0"></div>
           <img class="w-full h-full object-cover transition-transform duration-300
                    transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
                [src]="lunch" alt=""
@@ -33,8 +33,8 @@
       </a>
       <a class="cursor-pointer" (click)="onShowCategory('Treat')">
         <mat-grid-tile
-          class="relative group">
-          <div class="absolute inset-0 bg-black opacity-40"></div>
+          class="relative">
+          <div class="absolute inset-0"></div>
           <img class="w-full h-full object-cover transition-transform duration-300
                    transform hover:scale-110 hover:translate-y-1 hover:rotate-3"
                [src]="treats" alt=""

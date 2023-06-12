@@ -6,24 +6,35 @@ import {MealOptionsComponent} from "./meal-options/meal-options.component";
 import {SharedModule} from "../shared/shared.module";
 import {HomeRoutingModule} from "./home-routing.module";
 import {MaterialModule} from "../material/material.module";
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     CountdownComponent,
     HeroSectionComponent,
-    MealOptionsComponent
+    MealOptionsComponent,
+    HowItWorksComponent,
+    FaqComponent,
+    ContactUsComponent
   ],
   exports: [
     CountdownComponent,
     HeroSectionComponent,
-    MealOptionsComponent
+    MealOptionsComponent,
+    HowItWorksComponent,
+    FaqComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     HomeRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule {
