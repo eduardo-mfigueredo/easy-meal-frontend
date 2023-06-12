@@ -2,7 +2,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {Cart, MenuOption} from "../../models/menu-model";
 import {Observable} from "rxjs";
 import {CartStore} from "../../store/cart/cart.store";
-import {ViewportScroller} from "@angular/common";
+import {MealOptionsService} from "../../services/meal-options/meal-options.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,10 @@ export class HeaderComponent {
 
   constructor(
     private cartStore: CartStore,
-    private viewportScroller: ViewportScroller
+    private router: Router,
+    private mealOptionService: MealOptionsService
   ) {
-    this
-      .cartStore
-      .fetchCart();
+    this.cartStore.fetchCart();
   }
 
   ngOnInit()
@@ -49,8 +49,13 @@ export class HeaderComponent {
   scrollToSection(sectionId: string) {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      section.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     }
+  }
+
+  onShowCategory(category: string): void {
+    this.mealOptionService.categorySelected.next(category);
+    this.router.navigate(['product-category']);
   }
 
 }

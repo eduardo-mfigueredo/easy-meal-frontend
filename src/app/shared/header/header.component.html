@@ -28,8 +28,10 @@
         <mat-icon>keyboard_arrow_down</mat-icon>
       </a>
       <mat-menu #menuOptions="matMenu">
-        <button mat-menu-item>All Meals</button>
-        <button mat-menu-item>Custom</button>
+        <a mat-menu-item (click)="onShowCategory('')" >All</a>
+        <a mat-menu-item (click)="onShowCategory('Breakfast')">Breakfast</a>
+        <a mat-menu-item (click)="onShowCategory('Meal')">Meals</a>
+        <a mat-menu-item (click)="onShowCategory('Treat')">Treats</a>
       </mat-menu>
       <a mat-button (click)="scrollToSection('how-it-works')" class="px-6 text-lg">ABOUT</a>
       <a mat-button (click)="scrollToSection('faq')" class="px-6 text-lg">FAQ</a>
@@ -83,10 +85,12 @@
         MENU
         <mat-icon>keyboard_arrow_down</mat-icon>
       </button>
-      <mat-menu #menuOptions="matMenu">
-        <button mat-menu-item>All Meals</button>
-        <button mat-menu-item>Custom</button>
-      </mat-menu>
+<!--      <mat-menu #menuOptions="matMenu">-->
+<!--        <a mat-menu-item>All</a>-->
+<!--        <a mat-menu-item>Breakfast</a>-->
+<!--        <a mat-menu-item>Meals</a>-->
+<!--        <a mat-menu-item>Treats</a>-->
+<!--      </mat-menu>-->
       <button mat-button (click)="scrollToSection('how-it-works')" class="px-6">ABOUT</button>
       <button mat-button (click)="scrollToSection('faq')" class="px-6">FAQ</button>
       <button mat-button (click)="scrollToSection('contact-us')" class="px-6">CONTACT US</button>

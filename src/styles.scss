@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Asap;
+  src: url('/assets/fonts/Asap-Regular.ttf') format("opentype");
+}
+
+@font-face {
+  font-family: MuktaVaani;
+  src: url('/assets/fonts/MuktaVaani-Regular.ttf') format("opentype");
+}
+
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  //font-family: MuktaVaani, sans-serif !important;
 }
 
 .color-white {

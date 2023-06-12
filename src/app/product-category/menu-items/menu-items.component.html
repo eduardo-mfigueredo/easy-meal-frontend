@@ -1,4 +1,4 @@
-<div *ngIf="menuOptions$ | async as menuOptions" class="flex flex-wrap justify-center gap-6 pb-20">
+<div *ngIf="menuOptions$ | async as menuOptions" class="w-[80vw] flex flex-wrap justify-center mx-auto gap-6 pb-20">
   <div *ngFor="let menuOption of menuOptions">
     <app-menu-option-card
       [menuOption]="menuOption"
