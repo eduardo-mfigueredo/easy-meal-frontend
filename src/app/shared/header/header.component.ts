@@ -3,7 +3,7 @@ import {Cart, MenuOption} from "../../models/menu-model";
 import {Observable} from "rxjs";
 import {CartStore} from "../../store/cart/cart.store";
 import {MealOptionsService} from "../../services/meal-options/meal-options.service";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -15,6 +15,7 @@ export class HeaderComponent {
   itemsQuantity!: number;
   cart$?: Observable<Cart | undefined>;
   @Output() toggledSideNav: EventEmitter<boolean> = new EventEmitter();
+  isHome!: boolean;
 
   constructor(
     private cartStore: CartStore,
@@ -24,10 +25,14 @@ export class HeaderComponent {
     this.cartStore.fetchCart();
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
     this.cart$ = this.cartStore.getCart();
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isHome = event.url.includes('/home');
+      }
+    });
   }
 
   toggleSideNav() {

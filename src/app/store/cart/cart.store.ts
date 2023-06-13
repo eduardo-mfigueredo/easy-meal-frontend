@@ -28,7 +28,6 @@ export class CartStore extends ComponentStore<CartState> {
               this.setCart(response);
               this.setTotal(this._service.getTotal(response.items));
               this._service.saveCartToLocalStorage(response)
-              console.log(response)
             },
             (error: HttpErrorResponse) => {
               console.log('error');

@@ -18,24 +18,29 @@
   </div>
 
   <div class="bg-white flex flex-row justify-between sm:justify-around mx-[5vw] my-1">
-    <a [routerLink]="['']">
+    <a [routerLink]="['/home']">
       <img class="object-contain max-h-[50px] max-w-[90px]"
            src="../../../assets/logo/easy-vegan.png" alt="logo">
     </a>
-
     <div class=" flex flex-row items-center max-sm:hidden">
-      <a mat-button [matMenuTriggerFor]="menuOptions" class="text-lg">MENU
-        <mat-icon>keyboard_arrow_down</mat-icon>
+      <div *ngIf="isHome">
+        <a mat-button [matMenuTriggerFor]="menuOptions" class="text-lg">MENU
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </a>
+        <mat-menu #menuOptions="matMenu">
+          <a mat-menu-item (click)="onShowCategory('')">All</a>
+          <a mat-menu-item (click)="onShowCategory('Breakfast')">Breakfast</a>
+          <a mat-menu-item (click)="onShowCategory('Meal')">Meals</a>
+          <a mat-menu-item (click)="onShowCategory('Treat')">Treats</a>
+        </mat-menu>
+        <a mat-button (click)="scrollToSection('how-it-works')" class="px-6 text-lg">ABOUT</a>
+        <a mat-button (click)="scrollToSection('faq')" class="px-6 text-lg">FAQ</a>
+        <a mat-button (click)="scrollToSection('contact-us')" class="px-6 text-lg">CONTACT US</a>
+      </div>
+      <a mat-button *ngIf="!isHome" class="flex items-center" [routerLink]="['home']">
+        <mat-icon>keyboard_backspace</mat-icon>
+        <span>BACK TO HOME</span>
       </a>
-      <mat-menu #menuOptions="matMenu">
-        <a mat-menu-item (click)="onShowCategory('')" >All</a>
-        <a mat-menu-item (click)="onShowCategory('Breakfast')">Breakfast</a>
-        <a mat-menu-item (click)="onShowCategory('Meal')">Meals</a>
-        <a mat-menu-item (click)="onShowCategory('Treat')">Treats</a>
-      </mat-menu>
-      <a mat-button (click)="scrollToSection('how-it-works')" class="px-6 text-lg">ABOUT</a>
-      <a mat-button (click)="scrollToSection('faq')" class="px-6 text-lg">FAQ</a>
-      <a mat-button (click)="scrollToSection('contact-us')" class="px-6 text-lg">CONTACT US</a>
       <a mat-button [matMenuTriggerFor]="cart">
         <mat-icon [matBadge]="itemsQuantity"
                   [matBadgeHidden]="!itemsQuantity"
@@ -80,27 +85,35 @@
 
 
   <mat-menu #menu="matMenu">
-    <div class="flex flex-col">
-      <button mat-button [matMenuTriggerFor]="menuOptions" (click)="$event.stopPropagation()">
-        MENU
-        <mat-icon>keyboard_arrow_down</mat-icon>
-      </button>
-<!--      <mat-menu #menuOptions="matMenu">-->
-<!--        <a mat-menu-item>All</a>-->
-<!--        <a mat-menu-item>Breakfast</a>-->
-<!--        <a mat-menu-item>Meals</a>-->
-<!--        <a mat-menu-item>Treats</a>-->
-<!--      </mat-menu>-->
-      <button mat-button (click)="scrollToSection('how-it-works')" class="px-6">ABOUT</button>
-      <button mat-button (click)="scrollToSection('faq')" class="px-6">FAQ</button>
-      <button mat-button (click)="scrollToSection('contact-us')" class="px-6">CONTACT US</button>
-      <button mat-button [matMenuTriggerFor]="cart" (click)="$event.stopPropagation()">
-        <mat-icon [matBadge]="itemsQuantity"
-                  [matBadgeHidden]="!itemsQuantity"
-                  matBadgeColor="warn">
-          shopping_basket
-        </mat-icon>
-      </button>
+    <div>
+      <div *ngIf="isHome" class="flex flex-col">
+        <button mat-button [matMenuTriggerFor]="menuOptions" (click)="$event.stopPropagation()">
+          MENU
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menuOptions="matMenu">
+          <a mat-menu-item (click)="onShowCategory('')">All</a>
+          <a mat-menu-item (click)="onShowCategory('Breakfast')">Breakfast</a>
+          <a mat-menu-item (click)="onShowCategory('Meal')">Meals</a>
+          <a mat-menu-item (click)="onShowCategory('Treat')">Treats</a>
+        </mat-menu>
+        <button mat-button (click)="scrollToSection('how-it-works')" class="px-6">ABOUT</button>
+        <button mat-button (click)="scrollToSection('faq')" class="px-6">FAQ</button>
+        <button mat-button (click)="scrollToSection('contact-us')" class="px-6">CONTACT US</button>
+      </div>
+      <div class="flex flex-col justify-center">
+        <a mat-button *ngIf="!isHome" class="flex items-center" [routerLink]="['home']">
+          <mat-icon>keyboard_backspace</mat-icon>
+          <span>BACK TO HOME</span>
+        </a>
+        <button mat-button [matMenuTriggerFor]="cart" (click)="$event.stopPropagation()">
+          <mat-icon [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+            shopping_basket
+          </mat-icon>
+        </button>
+      </div>
     </div>
   </mat-menu>
 

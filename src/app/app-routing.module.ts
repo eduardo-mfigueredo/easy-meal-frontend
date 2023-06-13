@@ -8,6 +8,11 @@ import {AuthGuard} from "./guard/auth.guard";
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     children: [
       {
         path: '',
@@ -36,6 +41,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminAreaComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 
