@@ -1,11 +1,14 @@
 <div class="relative h-2/3">
   <div class="absolute inset-0 flex flex-col items-center justify-center gap-12">
-    <span class="text-4xl sm:text-7xl text-white text-center font-bold">
+    <h1 class="text-white text-center">
+     <span class="text-4xl sm:text-7xl font-bold">
       Vegan food delivered to your door!
     </span>
+    </h1>
     <button mat-raised-button class="bg-green-700" [routerLink]="['/product-category']">
       <span class="inline-block py-4 text-xl text-white uppercase px-[24px] sm:px-[64px]">Order Now</span>
     </button>
   </div>
-  <div class="absolute inset-0 bg-cover bg-center opacity-95 -z-10" style="background-image: url('./assets/pics/hero-photo.jpg')"></div>
+  <div class="absolute inset-0 bg-cover bg-center opacity-95 -z-10"
+       style="background-image: url('./assets/pics/hero-photo.jpg')"></div>
 </div>
