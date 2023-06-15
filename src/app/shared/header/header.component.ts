@@ -30,7 +30,7 @@ export class HeaderComponent {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.isHome = event.url.includes('/home');
+        this.isHome = event.url === '/home' || event.url === '/'
       }
     });
   }
