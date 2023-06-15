@@ -10,6 +10,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ContactSentDialogComponent } from './contact-sent-dialog/contact-sent-dialog.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MealOptionsComponent,
     HowItWorksComponent,
     FaqComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ContactSentDialogComponent
   ],
   exports: [
     CountdownComponent,

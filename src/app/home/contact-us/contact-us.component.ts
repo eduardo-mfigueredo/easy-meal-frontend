@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {FirestoreService} from "../../services/firestore/firestore.service";
 import {DatePipe} from "@angular/common";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {ContactSentDialogComponent} from "../contact-sent-dialog/contact-sent-dialog.component";
 
 @Component({
   selector: 'app-contact-us',
@@ -21,7 +22,7 @@ export class ContactUsComponent {
     private fb: FormBuilder,
     private firestore: FirestoreService,
     private datePipe: DatePipe,
-    private snackbar: MatSnackBar
+    private dialog: MatDialog
   ) {
   }
 
@@ -35,9 +36,7 @@ export class ContactUsComponent {
       }).then(() => {
         console.log(this.form.value);
         this.form.reset();
-        this.snackbar.open('Message sent successfully!', 'Close', {
-          duration: 3000
-        })
+        this.dialog.open(ContactSentDialogComponent);
       })
     }
   }
