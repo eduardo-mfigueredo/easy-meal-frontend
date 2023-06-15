@@ -9,10 +9,12 @@ import {MenuOption} from "../../models/menu-model";
 export class FirestoreService {
   private collectionMenuOptions: AngularFirestoreCollection<any>;
   private collectionCutoff: AngularFirestoreCollection<any>;
+  private collectionContactForm: AngularFirestoreCollection<any>;
 
   constructor(private firestore: AngularFirestore) {
     this.collectionMenuOptions = firestore.collection('menu-options');
     this.collectionCutoff = firestore.collection('cut-off-time');
+    this.collectionContactForm = firestore.collection('contact-form');
   }
 
 
@@ -66,6 +68,10 @@ export class FirestoreService {
 
   setCutOff(cutoff: string): void {
     this.firestore.collection('cut-off-time').doc('yES9VeXntFVPAjsUj2pd').set({cutoff: cutoff});
+  }
+
+  addContactForm(form: any): Promise<any> {
+    return this.collectionContactForm.add(form);
   }
 
 }

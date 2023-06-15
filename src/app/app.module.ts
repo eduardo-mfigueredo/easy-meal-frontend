@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
-import {NgOptimizedImage} from "@angular/common";
+import {DatePipe, NgOptimizedImage} from "@angular/common";
 import {HomeComponent} from './home/home.component';
 import {SharedModule} from "./shared/shared.module";
 import {HomeModule} from "./home/home.module";
@@ -56,7 +56,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     }),
     AngularFireAuthModule
   ],
-  providers: [MenuStore, CartStore],
+  providers: [MenuStore, CartStore, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
