@@ -30,7 +30,7 @@
     </div>
   </ng-container>
 
-  <div class="max-w-[800px] flex flex-col sm:flex-row justify-between items-center mx-auto mt-8">
+  <div *ngIf="cart.items.length" class="max-w-[800px] flex flex-col sm:flex-row justify-between items-center mx-auto mt-8">
     <p class="text-2xl md:text-3xl">Total: {{ total | currency }}</p>
     <button mat-raised-button class="bg-green-700">
       <span class="inline-block py-4 px-8 text-2xl text-white">Checkout</span>
