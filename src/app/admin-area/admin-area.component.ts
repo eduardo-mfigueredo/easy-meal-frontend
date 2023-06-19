@@ -25,11 +25,11 @@ export class AdminAreaComponent {
   }
 
   openCutOffSetter() {
-    const dialogRef = this.dialog.open(CutOffSetterComponent);
+    this.dialog.open(CutOffSetterComponent);
   }
 
   openMenuHandler() {
-    const dialogRef = this.dialog.open(MenuHandlerComponent);
+    this.dialog.open(MenuHandlerComponent);
   }
 
   logout() {

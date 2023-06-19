@@ -9,33 +9,43 @@
       <span>CLOSE</span>
     </button>
   </div>
-  <div class="flex flex-col gap-4 pb-4">
-    <div *ngFor="let option of menuOptions"
-         class="flex flex-col md:flex-row min-h-[270px] gap-2 sm:gap-12 shadow-lg border rounded">
-      <div class="flex items-center justify-center">
-        <img src="{{ option.image }}" alt=""/>
-      </div>
-      <div class="md:w-3/4">
-        <h2>{{ option.title }}</h2>
-        <p> {{ option.description }} </p>
-        <p>Category: {{ option.category }} </p>
-        <p> {{ option.price | currency }} </p>
-        <p>Nutriotional Information:</p>
-        <p>Calories: {{ option.nutritionalInfo.calories }}kcal </p>
-        <p>Fat: {{ option.nutritionalInfo.fat }}g </p>
-        <p>Carbs: {{ option.nutritionalInfo.carbs }}g </p>
-        <p>Protein: {{ option.nutritionalInfo.protein }}g </p>
-        <div class="flex gap-4 py-4">
-          <button class="flex items-center" (click)="onEditMenuOption(option)">
-            <mat-icon>edit</mat-icon>
-            Edit
-          </button>
-          <button class="flex items-center" (click)="onDeleteMenuOption(option)">
-            <mat-icon>delete_outline</mat-icon>
-            Delete
-          </button>
+  <ng-container *ngIf="user$ | async as user">
+    <div class="flex flex-col gap-4 pb-4">
+      <div *ngFor="let option of menuOptions"
+           class="flex flex-col md:flex-row min-h-[270px] gap-2 sm:gap-12 shadow-lg border rounded">
+        <div class="flex items-center justify-center">
+          <img src="{{ option.image }}" alt=""/>
+        </div>
+        <div class="md:w-3/4">
+          <h2>{{ option.title }}</h2>
+          <p> {{ option.description }} </p>
+          <p>Category: {{ option.category }} </p>
+          <p> {{ option.price | currency }} </p>
+          <p>Nutriotional Information:</p>
+          <p>Calories: {{ option.nutritionalInfo.calories }}kcal </p>
+          <p>Fat: {{ option.nutritionalInfo.fat }}g </p>
+          <p>Carbs: {{ option.nutritionalInfo.carbs }}g </p>
+          <p>Protein: {{ option.nutritionalInfo.protein }}g </p>
+          <div class="flex gap-4 py-4">
+            <button class="flex items-center" (click)="onEditMenuOption(option)"
+                    [ngClass]="user.role === 'guest' ? 'cursor-not-allowed' : 'cursor-pointer'"
+                    [disabled]="user.role === 'guest'"
+                    [matTooltip]="user.role === 'guest' ? 'As a guest, you cannot edit. Try add something.' : ''"
+            >
+              <mat-icon>edit</mat-icon>
+              Edit
+            </button>
+            <button class="flex items-center" (click)="onDeleteMenuOption(option)"
+                    [ngClass]="user.role === 'guest' ? 'cursor-not-allowed' : 'cursor-pointer'"
+                    [disabled]="user.role === 'guest'"
+                    [matTooltip]="user.role === 'guest' ? 'As a guest, you cannot delete. Try add something.' : ''"
+            >
+              <mat-icon>delete_outline</mat-icon>
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </section>

@@ -20,7 +20,7 @@ export class HeaderComponent {
   constructor(
     private cartStore: CartStore,
     private router: Router,
-    private mealOptionService: MealOptionsService
+    private mealOptionService: MealOptionsService,
   ) {
     this.cartStore.fetchCart();
   }
