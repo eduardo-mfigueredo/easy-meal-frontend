@@ -14,11 +14,7 @@
     You can test it out at: https://easy-meal-65a53.web.app/
     
     To check out the Admin Area of the app, https://easy-meal-65a53.web.app/login
-    
-    or
-
-    click in 'Login' on the top right corner of the page and 
-    use the following credentials:
+    and use the following credentials:
 
     test@easy-meal.com
     123456
