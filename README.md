@@ -13,8 +13,12 @@
 
     You can test it out at: https://easy-meal-65a53.web.app/
     
-    To check out the Admin Area of the app, click in 'Login' on the 
-    top right corner of the page and use the following credentials:
+    To check out the Admin Area of the app, https://easy-meal-65a53.web.app/login
+    
+    or
+
+    click in 'Login' on the top right corner of the page and 
+    use the following credentials:
 
     test@easy-meal.com
     123456
@@ -26,9 +30,9 @@
 
     To run it locally, you'll need to have Node.js and Angular CLI installed.
 
-<pre><code>
-git clone git@github.com:eduardo-mfigueredo/easy-meal-frontend.git
-</code></pre>
+
+    git clone git@github.com:eduardo-mfigueredo/easy-meal-frontend.git
+
 
     Please, note that there is no implementation for the checkout yet,
     in case that you simulate an order. Any suggestion on how to implement
