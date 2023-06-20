@@ -26,10 +26,9 @@
 
     To run it locally, you'll need to have Node.js and Angular CLI installed.
 
-    ```bash
-    git clone git@github.com:eduardo-mfigueredo/easy-meal-frontend.git
-    ```
-
+<pre><code>
+git clone git@github.com:eduardo-mfigueredo/easy-meal-frontend.git
+</code></pre>
 
     Please, note that there is no implementation for the checkout yet,
     in case that you simulate an order. Any suggestion on how to implement
