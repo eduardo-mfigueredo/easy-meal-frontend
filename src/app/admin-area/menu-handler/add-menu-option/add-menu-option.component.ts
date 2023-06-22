@@ -49,8 +49,6 @@ export class AddMenuOptionComponent {
   }
 
   submit(): void {
-    // console.log(this.form.value);
-    // console.log(this.form.valid);
     if (this.form.valid) {
       this.firestoreService.addItem(
         {

@@ -34,7 +34,7 @@ export class CutOffSetterComponent {
 
   setTime(date: string): void {
     this.firestore.setCutOff(date);
-    console.log(date);
+    this.dialogRef.close(CutOffSetterComponent);
   }
 
   closeDialog() {
